@@ -247,7 +247,7 @@ export default function Planner() {
           <p className="mt-2 text-sm text-accent-dark">{cityError}</p>
         ) : (
           <p className="mt-2 text-sm text-muted">
-            Type any city, or open the list. European capitals are supported, plus Barcelona.
+            Type any city, or open the list. European capitals plus London-level detail for the world’s most-visited destinations.
           </p>
         )}
 

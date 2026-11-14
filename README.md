@@ -10,6 +10,8 @@ You pick a supported city, how long you're staying, a pace, a budget, and what y
 
 All European capitals, plus Barcelona.
 
+**Deep catalogs (London-level):** Amsterdam, Antalya, Bangkok, Barcelona, Delhi, Dubai, Hong Kong, Istanbul, Kuala Lumpur, London, Macau, Madrid, Mecca, New York, Paris, Rome, Seoul, Shanghai, Singapore, Tokyo.
+
 ## Run it
 
 ```bash

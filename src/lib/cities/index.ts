@@ -1,15 +1,54 @@
 import { PlannerError } from "../errors";
 import type { CityCatalog } from "../types";
+import { amsterdam } from "./amsterdam";
+import { antalya } from "./antalya";
+import { bangkok } from "./bangkok";
 import { barcelona } from "./barcelona";
 import { bucharest } from "./bucharest";
+import { delhi } from "./delhi";
+import { dubai } from "./dubai";
 import { EUROPEAN_CAPITALS } from "./europe";
+import { hongkong } from "./hongkong";
+import { istanbul } from "./istanbul";
+import { kualalumpur } from "./kualalumpur";
 import { lisbon } from "./lisbon";
 import { london } from "./london";
+import { macau } from "./macau";
+import { madrid } from "./madrid";
+import { mecca } from "./mecca";
+import { newyork } from "./newyork";
 import { paris } from "./paris";
 import { rome } from "./rome";
+import { seoul } from "./seoul";
+import { shanghai } from "./shanghai";
+import { singapore } from "./singapore";
+import { tokyo } from "./tokyo";
 
 /** Hand-curated catalogs win over the compact EUROPEAN_CAPITALS stubs. */
-const CURATED_CITIES: CityCatalog[] = [lisbon, rome, paris, barcelona, bucharest, london];
+const CURATED_CITIES: CityCatalog[] = [
+  amsterdam,
+  antalya,
+  bangkok,
+  barcelona,
+  bucharest,
+  delhi,
+  dubai,
+  hongkong,
+  istanbul,
+  kualalumpur,
+  lisbon,
+  london,
+  macau,
+  madrid,
+  mecca,
+  newyork,
+  paris,
+  rome,
+  seoul,
+  shanghai,
+  singapore,
+  tokyo,
+];
 const CURATED_IDS = new Set(CURATED_CITIES.map((city) => city.id));
 
 export const CITIES: CityCatalog[] = [
@@ -38,7 +77,7 @@ export function matchCityCatalog(destination: string): CityCatalog | null {
 
 export function unsupportedCityMessage(destination: string): string {
   const typed = destination.trim() || "That city";
-  return `${typed} is not supported yet. Try a European capital from the list.`;
+  return `${typed} is not supported yet. Try a city from the list — London, Paris, and other top destinations are fully detailed.`;
 }
 
 export function findCityCatalog(destination: string): CityCatalog {

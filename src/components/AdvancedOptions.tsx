@@ -161,7 +161,9 @@ export default function AdvancedOptions({
                 ? "Cafes and quick food"
                 : id === "sitdown"
                   ? "Proper restaurants"
-                  : "A bit of both",
+                  : id === "skip"
+                    ? "Only sights, lodging, and evenings — no lunch or dinner stops"
+                    : "A bit of both",
         }))}
         onChange={(meals) => onChange({ meals })}
       />

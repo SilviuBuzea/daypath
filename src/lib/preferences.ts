@@ -110,7 +110,7 @@ export function parsePreferences(body: unknown): { prefs: Preferences } | { erro
       ),
       meals: oneOf(
         record.meals,
-        ["any", "quick", "sitdown", "mix"] as const,
+        ["any", "quick", "sitdown", "mix", "skip"] as const,
         DEFAULT_PREFERENCES.meals,
       ),
       lateNights: oneOf(
@@ -201,6 +201,7 @@ export const MEAL_LABEL = {
   quick: "Quick bites",
   sitdown: "Sit-down meals",
   mix: "A mix",
+  skip: "Skip meals",
 } as const;
 
 export const LATE_LABEL = {

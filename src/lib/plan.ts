@@ -249,14 +249,17 @@ function assembleDay(
   const previousDinner = previous?.stops.find((stop) => stop.role === "dinner")?.place;
   const previousEvening = previous?.stops.find((stop) => stop.role === "evening")?.place;
 
-  const lunch =
-    locks.lunch && previousLunch && !activityIds.has(previousLunch.id)
+  const skipMeals = prefs.meals === "skip";
+  const lunch = skipMeals
+    ? undefined
+    : locks.lunch && previousLunch && !activityIds.has(previousLunch.id)
       ? previousLunch
       : pickMeal(itinerary, "lunch", lunchAnchor, used);
   if (lunch) used.add(lunch.id);
 
-  const dinner =
-    locks.dinner && previousDinner && !activityIds.has(previousDinner.id)
+  const dinner = skipMeals
+    ? undefined
+    : locks.dinner && previousDinner && !activityIds.has(previousDinner.id)
       ? previousDinner
       : pickMeal(itinerary, "dinner", dinnerAnchor, used);
   if (dinner) used.add(dinner.id);
@@ -791,6 +794,7 @@ function routeNoteFor(area: string, prefs: Preferences): string {
   if (prefs.downtime === "yes") bits.push("There's breathing room for a break or nap.");
   if (prefs.rainPlan === "yes") bits.push("Indoor-friendly stops are favored.");
   if (prefs.shoppingTime === "yes") bits.push("Shopping time is worked into the mix.");
+  if (prefs.meals === "skip") bits.push("Meals are left open for you to choose.");
   return bits.join(" ");
 }
 

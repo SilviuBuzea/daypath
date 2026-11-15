@@ -8,6 +8,14 @@ import { formatSavedAt } from "@/lib/format";
 import { swapActivity, swapLodging, swapMeal } from "@/lib/plan";
 import { DEFAULT_PREFERENCES } from "@/lib/preferences";
 import {
+  decodeSharePayload,
+  encodeSharePayload,
+  hydrateSharePayload,
+  readShareTokenFromLocation,
+  tripToSharePayload,
+  writeShareTokenToUrl,
+} from "@/lib/share";
+import {
   deleteSavedTrip,
   listSavedTrips,
   loadPreferences,
@@ -68,6 +76,25 @@ export default function Planner() {
     // Always start with a blank city field; restore other saved preferences.
     if (stored) setPrefs({ ...DEFAULT_PREFERENCES, ...stored, destination: "" });
     setSavedTrips(listSavedTrips());
+
+    const token = readShareTokenFromLocation(window.location.search);
+    if (token) {
+      const payload = decodeSharePayload(token);
+      const shared = payload ? hydrateSharePayload(payload) : null;
+      if (shared) {
+        const nextPrefs = {
+          ...DEFAULT_PREFERENCES,
+          ...shared.prefs,
+          destination: shared.prefs.destination || shared.destination,
+        };
+        setPrefs(nextPrefs);
+        setTrip({ ...shared, prefs: nextPrefs });
+      } else {
+        setError("That shared trip link is invalid or outdated.");
+        writeShareTokenToUrl(null);
+      }
+    }
+
     setPrefsReady(true);
   }, []);
 
@@ -75,6 +102,15 @@ export default function Planner() {
     if (!prefsReady) return;
     savePreferences(prefs);
   }, [prefsReady, prefs]);
+
+  useEffect(() => {
+    if (!prefsReady) return;
+    if (trip) {
+      writeShareTokenToUrl(encodeSharePayload(tripToSharePayload(trip)));
+    } else if (!readShareTokenFromLocation(window.location.search)) {
+      writeShareTokenToUrl(null);
+    }
+  }, [prefsReady, trip]);
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
@@ -145,6 +181,7 @@ export default function Planner() {
         trip={trip}
         onReset={() => {
           setTrip(null);
+          writeShareTokenToUrl(null);
           setSavedTrips(listSavedTrips());
         }}
         onLoadTrip={applyTrip}

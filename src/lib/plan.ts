@@ -97,6 +97,80 @@ export function createItinerary(city: CityCatalog, prefs: Preferences): Itinerar
   return refreshAlternatives(draft);
 }
 
+export function rebuildSharedItinerary(
+  city: CityCatalog,
+  prefs: Preferences,
+  snapshot: {
+    lodgingId: string;
+    days: {
+      activityIds: string[];
+      lunchId?: string;
+      dinnerId?: string;
+      eveningId?: string;
+      pinnedActivityIds: string[];
+      mealLocks: MealLocks;
+    }[];
+  },
+): Itinerary {
+  const base = createItinerary(city, prefs);
+  const byId = new Map<string, Place>();
+  for (const place of city.places) byId.set(place.id, place);
+  for (const place of [
+    ...base.catalog.activities,
+    ...base.catalog.food,
+    ...base.catalog.nightlife,
+    ...base.catalog.stays,
+  ]) {
+    byId.set(place.id, place);
+  }
+
+  const lodging = byId.get(snapshot.lodgingId) ?? base.lodging;
+  const draft: Itinerary = {
+    ...base,
+    lodging,
+    lodgingAlternatives: stayAlternatives(lodging, base.catalog.stays, prefs),
+    days: [],
+  };
+
+  draft.days = snapshot.days.map((day, index) => {
+    const activities = day.activityIds
+      .map((id) => byId.get(id))
+      .filter((place): place is Place => Boolean(place));
+    const fallback =
+      activities.length > 0
+        ? activities
+        : base.days[index]?.stops.filter((stop) => stop.role === "activity").map((stop) => stop.place) ??
+          [];
+
+    const previousStops: Stop[] = [];
+    const lunch = day.lunchId ? byId.get(day.lunchId) : undefined;
+    const dinner = day.dinnerId ? byId.get(day.dinnerId) : undefined;
+    const evening = day.eveningId ? byId.get(day.eveningId) : undefined;
+    if (lunch) previousStops.push({ role: "lunch", place: lunch, alternatives: [] });
+    if (dinner) previousStops.push({ role: "dinner", place: dinner, alternatives: [] });
+    if (evening) previousStops.push({ role: "evening", place: evening, alternatives: [] });
+
+    return assembleDay(
+      index + 1,
+      fallback,
+      {
+        day: index + 1,
+        title: "",
+        area: "",
+        routeNote: "",
+        stops: previousStops,
+        mealLocks: day.mealLocks,
+        pinnedActivityIds: day.pinnedActivityIds,
+      },
+      draft,
+      index,
+      draft.lodging,
+    );
+  });
+
+  return refreshAlternatives(draft);
+}
+
 export function swapActivity(
   itinerary: Itinerary,
   dayIndex: number,

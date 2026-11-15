@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 import { formatSavedAt, legKm, placeLine, roleLabel, walkLabel } from "@/lib/format";
 import { dayRouteMapsUrl, placeMapsUrl } from "@/lib/maps";
 import { summarizeAdvanced } from "@/lib/preferences";
+import { buildShareUrl } from "@/lib/share";
 import { deleteSavedTrip, listSavedTrips, saveTrip, type SavedTrip } from "@/lib/storage";
 import type { DayPlan, Itinerary, Place, Preferences } from "@/lib/types";
 
@@ -30,6 +31,7 @@ export default function ItineraryView({
   const [lodgingOpen, setLodgingOpen] = useState(false);
   const [savedTrips, setSavedTrips] = useState<SavedTrip[]>(() => listSavedTrips());
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [shareMessage, setShareMessage] = useState<string | null>(null);
   const day = trip.days[Math.min(dayIndex, trip.days.length - 1)];
   const dayMapsUrl = dayRouteMapsUrl(trip, day);
 
@@ -50,6 +52,32 @@ export default function ItineraryView({
     window.setTimeout(() => setSaveMessage(null), 2500);
   }
 
+  async function handleShareTrip() {
+    const url = buildShareUrl(trip);
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `Daypath · ${trip.destination}`,
+          text: `A ${trip.days.length}-day Daypath plan for ${trip.destination}`,
+          url,
+        });
+        setShareMessage("Share sheet opened.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Link copied — anyone can open this trip.");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Link copied — anyone can open this trip.");
+      } catch {
+        setShareMessage("Couldn’t copy the link. Copy it from the address bar.");
+      }
+    }
+    window.setTimeout(() => setShareMessage(null), 2500);
+  }
+
   return (
     <>
       <div className="screen-only mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6 sm:px-6">
@@ -66,6 +94,13 @@ export default function ItineraryView({
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
+              onClick={() => void handleShareTrip()}
+              className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-white"
+            >
+              Share link
+            </button>
+            <button
+              type="button"
               onClick={handleSaveTrip}
               className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium"
             >
@@ -74,7 +109,7 @@ export default function ItineraryView({
             <button
               type="button"
               onClick={savePdf}
-              className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-white"
+              className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium"
             >
               Save as PDF
             </button>
@@ -87,6 +122,7 @@ export default function ItineraryView({
             </button>
           </div>
         </header>
+        {shareMessage ? <p className="text-sm text-forest">{shareMessage}</p> : null}
         {saveMessage ? <p className="text-sm text-forest">{saveMessage}</p> : null}
 
         {trip.cityTip ? (

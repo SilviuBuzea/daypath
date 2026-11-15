@@ -28,5 +28,6 @@ The stay is chosen near the middle of the places you'll visit. Each day gets one
 ## Free extras
 
 - Google Maps links for each stop, plus “Open this day in Maps”
+- Shareable trip links (`?t=…`) — use Share link, no account needed
 - Save trips and form choices in your browser (no account)
 - City tips, clearer morning/lunch/afternoon/dinner labels, and a cleaner PDF export

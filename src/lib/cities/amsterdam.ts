@@ -15,13 +15,13 @@ export const amsterdam: CityCatalog = {
     place("ams-spui", "Spui book market", 52.3688, 4.8892, "shopping", "Market", "Centrum", 6, "Friday book stalls and cafes around the Spui square."),
     place("ams-magere", "Magere Brug", 52.3635, 4.9035, "sight", "Attraction", "Plantage", 7, "Skinny bridge lights up at night over the Amstel."),
     place("ams-herengracht", "Herengracht canal walk", 52.3705, 4.8885, "sight", "Attraction", "Canal Ring", 8, "Golden Bend gabled houses on the grandest canal."),
-    place("ams-rijksmuseum", "Rijksmuseum", 52.36, 4.8852, "museum", "Museum", "Museumplein", 10, "Dutch Masters and Rembrandt's Night Watch — book timed entry."),
-    place("ams-van-gogh", "Van Gogh Museum", 52.3584, 4.8811, "museum", "Museum", "Museumplein", 10, "The world's largest Van Gogh collection beside the Rijksmuseum."),
+    place("ams-rijksmuseum", "Rijksmuseum", 52.36, 4.8852, "museum", "Museum", "Museumplein", 10, "Dutch Masters and Rembrandt's Night Watch — book timed entry.", { flags: ["ticket", "touristy"] }),
+    place("ams-van-gogh", "Van Gogh Museum", 52.3584, 4.8811, "museum", "Museum", "Museumplein", 10, "The world's largest Van Gogh collection beside the Rijksmuseum. Book ahead.", { flags: ["ticket", "touristy"] }),
     place("ams-stedelijk", "Stedelijk Museum", 52.3579, 4.8798, "museum", "Museum", "Museumplein", 7, "Modern and contemporary art on Museumplein."),
     place("ams-museumplein", "Museumplein lawn", 52.3595, 4.8835, "sight", "Attraction", "Museumplein", 7, "Iamsterdam letters gone but the lawn and terraces remain."),
     place("ams-vondelpark", "Vondelpark", 52.3579, 4.8686, "nature", "Park", "Oud-West", 8, "Central park for bikes, ponds, and open-air theatre in summer."),
     place("ams-westertoren", "Westerkerk tower", 52.3745, 4.8835, "sight", "Monument", "Jordaan", 7, "Climb for canal views near Anne Frank's house."),
-    place("ams-anne", "Anne Frank House", 52.3752, 4.884, "museum", "Museum", "Jordaan", 10, "Book weeks ahead — canal-side annex museum."),
+    place("ams-anne", "Anne Frank House", 52.3752, 4.884, "museum", "Museum", "Jordaan", 10, "Book weeks ahead — canal-side annex museum.", { flags: ["ticket", "early", "touristy"] }),
     place("ams-houseboats", "Houseboat Museum", 52.3725, 4.8845, "museum", "Museum", "Jordaan", 6, "Single-canal-boat glimpse of Amsterdam water living."),
 
     // ——— Jordaan / Nine Streets ———

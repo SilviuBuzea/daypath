@@ -41,6 +41,8 @@ export type Category =
   | "nightlife"
   | "stay";
 
+export type PlaceFlag = "ticket" | "early" | "free" | "touristy";
+
 export type Place = {
   id: string;
   name: string;
@@ -53,6 +55,8 @@ export type Place = {
   why: string;
   tip?: string;
   cuisine?: string;
+  /** Optional planner cues shown as chips on stops. */
+  flags?: PlaceFlag[];
 };
 
 export type Preferences = {

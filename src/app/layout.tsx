@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Daypath",
     description:
       "Free neighborhood-aware day plans — sights, meals, and a place to sleep, without zigzagging. No account needed.",

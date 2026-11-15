@@ -1,7 +1,15 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { formatSavedAt, legKm, placeLine, roleLabel, walkLabel } from "@/lib/format";
+import {
+  flagLabel,
+  formatSavedAt,
+  legKm,
+  placeFlags,
+  placeLine,
+  roleLabel,
+  walkLabel,
+} from "@/lib/format";
 import { dayRouteMapsUrl, placeMapsUrl } from "@/lib/maps";
 import { summarizeAdvanced } from "@/lib/preferences";
 import { buildShareUrl } from "@/lib/share";
@@ -143,10 +151,16 @@ export default function ItineraryView({
         <section className="rounded-3xl border border-line bg-card p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold tracking-wide text-muted uppercase">Your stay</p>
+              <p className="text-xs font-semibold tracking-wide text-muted uppercase">
+                Your stay · walking hub
+              </p>
               <h2 className="mt-1 font-serif text-2xl">{trip.lodging.name}</h2>
               <p className="mt-1 text-sm text-muted">{placeLine(trip.lodging)}</p>
               <p className="mt-2 max-w-xl text-sm">{trip.lodging.why}</p>
+              <p className="mt-2 max-w-xl text-sm text-muted">
+                Chosen near the middle of your days so each neighborhood pocket is a sensible hop from
+                here — not a hotel on the wrong side of town.
+              </p>
               {trip.lodging.tip ? <p className="mt-2 text-sm text-muted">{trip.lodging.tip}</p> : null}
               <a
                 href={placeMapsUrl(trip.lodging, trip.destination)}
@@ -194,6 +208,7 @@ export default function ItineraryView({
                 }`}
               >
                 Day {item.day}
+                {item.area ? ` · ${item.area}` : ""}
               </button>
             ))}
           </div>
@@ -204,7 +219,7 @@ export default function ItineraryView({
               rel="noreferrer"
               className="inline-flex min-h-11 items-center rounded-full border border-line bg-card px-4 py-2.5 text-sm font-medium"
             >
-              Open this day in Maps
+              Open walking route in Maps
             </a>
             <button
               type="button"
@@ -238,6 +253,7 @@ export default function ItineraryView({
                   </p>
                   <h3 className="mt-1 font-serif text-2xl">{stop.place.name}</h3>
                   <p className="mt-1 text-sm text-muted">{placeLine(stop.place)}</p>
+                  <PlaceFlagRow place={stop.place} />
                   <p className="mt-2 text-sm">{stop.place.why}</p>
                   {stop.place.tip ? <p className="mt-2 text-sm text-muted">{stop.place.tip}</p> : null}
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -353,10 +369,10 @@ function PrintableItinerary({ trip }: { trip: Itinerary }) {
 
       {trip.days.map((day) => (
         <section key={day.day} className="print-day mt-8 break-before-page border-t border-line pt-5">
-          <h2 className="font-serif text-3xl leading-tight">
-            Day {day.day}: {day.title}
-          </h2>
-          <p className="mt-1 text-sm">{day.area}</p>
+          <p className="text-xs font-semibold tracking-[0.14em] uppercase">
+            Day {day.day} · {day.area}
+          </p>
+          <h2 className="mt-1 font-serif text-3xl leading-tight">{day.title}</h2>
           <p className="mt-2 text-sm leading-relaxed">{day.routeNote}</p>
           <ol className="mt-5">
             {day.stops.map((stop, index) => {
@@ -402,11 +418,11 @@ function DaySection({
 }) {
   return (
     <section>
-      <h2 className="font-serif text-3xl">
-        Day {day.day}: {day.title}
-      </h2>
-      <p className="mt-1 text-sm text-muted">{day.area}</p>
-      <p className="mt-3 text-sm">{day.routeNote}</p>
+      <p className="text-xs font-semibold tracking-wide text-accent uppercase">
+        Day {day.day} · {day.area}
+      </p>
+      <h2 className="mt-1 font-serif text-3xl tracking-tight">{day.title}</h2>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{day.routeNote}</p>
       <ol className={interactive ? "timeline mt-6 space-y-4" : "mt-4"}>
         {day.stops.map((stop, index) =>
           children(stop, index, `${day.day}-${stop.role}-${stop.place.id}`),
@@ -416,6 +432,23 @@ function DaySection({
         Back to your stay · {walkLabel(legKm(day.stops.at(-1)?.place ?? trip.lodging, trip.lodging))}
       </p>
     </section>
+  );
+}
+
+function PlaceFlagRow({ place }: { place: Place }) {
+  const flags = placeFlags(place);
+  if (flags.length === 0) return null;
+  return (
+    <ul className="mt-2 flex flex-wrap gap-1.5">
+      {flags.map((flag) => (
+        <li
+          key={flag}
+          className="rounded-full border border-line bg-paper px-2.5 py-0.5 text-xs font-medium text-muted"
+        >
+          {flagLabel(flag)}
+        </li>
+      ))}
+    </ul>
   );
 }
 

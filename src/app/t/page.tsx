@@ -12,20 +12,29 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   if (!payload) {
     return {
       title: "Shared trip · Daypath",
-      description: "Open a Daypath itinerary shared with you.",
+      description:
+        "Open a neighborhood-aware Daypath itinerary. Free — no account needed.",
       openGraph: {
         title: "Shared trip · Daypath",
-        description: "Open a Daypath itinerary shared with you.",
+        description:
+          "Open a neighborhood-aware Daypath itinerary. Free — no account needed.",
         url: `${SITE}/t`,
         type: "website",
+        siteName: "Daypath",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Shared trip · Daypath",
+        description:
+          "Open a neighborhood-aware Daypath itinerary. Free — no account needed.",
       },
     };
   }
 
   const destination = payload.prefs.destination.trim() || "your trip";
   const days = payload.prefs.days;
-  const title = `${days}-day plan · ${destination} · Daypath`;
-  const description = `A neighborhood-aware Daypath itinerary for ${destination}. Free to open — no account needed.`;
+  const title = `${days} days in ${destination} · Daypath`;
+  const description = `Neighborhood-by-neighborhood plan for ${destination} — days stay in one pocket so you don’t zigzag. Free to open, no account.`;
 
   return {
     title,
@@ -38,7 +47,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       siteName: "Daypath",
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
     },

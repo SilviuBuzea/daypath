@@ -8,7 +8,7 @@ export const rome: CityCatalog = {
   center: { lat: 41.9028, lon: 12.4964 },
   places: [
     // ——— Colosseo / Ancient Rome ———
-    place("rm-colosseum", "Colosseum", 41.8902, 12.4922, "sight", "Attraction", "Colosseo", 10, "Book a timed ticket — pair it with the Forum on the same morning."),
+    place("rm-colosseum", "Colosseum", 41.8902, 12.4922, "sight", "Attraction", "Colosseo", 10, "Book a timed ticket — pair it with the Forum on the same morning.", { flags: ["ticket", "early", "touristy"] }),
     place("rm-forum", "Roman Forum", 41.8925, 12.4853, "sight", "Ruins", "Colosseo", 9, "Walk straight from the Colosseum into the heart of ancient Rome."),
     place("rm-palatine", "Palatine Hill", 41.8894, 12.4872, "sight", "Ruins", "Colosseo", 8, "Imperial palaces and quieter views over the Forum."),
     place("rm-arch-constantine", "Arch of Constantine", 41.8897, 12.4907, "sight", "Monument", "Colosseo", 6, "Free photo stop right beside the Colosseum."),
@@ -48,7 +48,7 @@ export const rome: CityCatalog = {
 
     // ——— Vatican / Prati ———
     place("rm-vatican", "St. Peter's Basilica", 41.9022, 12.4539, "sight", "Monument", "Vatican", 10, "Dress for church rules; dome climb if your legs are willing."),
-    place("rm-vatican-museums", "Vatican Museums", 41.9065, 12.4536, "museum", "Museum", "Vatican", 10, "Sistine Chapel payoff — book early entry or late slot."),
+    place("rm-vatican-museums", "Vatican Museums", 41.9065, 12.4536, "museum", "Museum", "Vatican", 10, "Sistine Chapel payoff — book early entry or late slot.", { flags: ["ticket", "early", "touristy"] }),
     place("rm-stpeters-square", "St. Peter's Square", 41.9022, 12.4567, "sight", "Attraction", "Vatican", 8, "Bernini colonnade — best at opening or after museums close."),
     place("rm-castel", "Castel Sant'Angelo", 41.9031, 12.4663, "sight", "Castle", "Prati", 8, "Hadrian's tomb turned papal fortress on the Tiber."),
     place("rm-borgo", "Borgo Pio walk", 41.9035, 12.4595, "sight", "Attraction", "Vatican", 5, "Pilgrim streets between St. Peter's and Castel Sant'Angelo."),

@@ -402,9 +402,9 @@ function assembleDay(
   const area = commonArea(ordered) || anchor?.area || "City center";
   return {
     day: dayNumber,
-    title: anchor ? dayTitle(anchor, cityCenter) : `Day ${dayNumber}`,
+    title: dayTitle(area, anchor, cityCenter),
     area,
-    routeNote: routeNoteFor(area, itinerary.prefs),
+    routeNote: routeNoteFor(area, itinerary.prefs, ordered, itinerary.lodging),
     stops,
     mealLocks: locks,
     pinnedActivityIds: [...pinned],
@@ -898,14 +898,32 @@ function wantsEvening(prefs: Preferences): boolean {
   return prefs.interests.includes("nightlife");
 }
 
-function routeNoteFor(area: string, prefs: Preferences): string {
-  const bits = [`This day stays around ${area}.`];
+function routeNoteFor(
+  area: string,
+  prefs: Preferences,
+  ordered: Place[],
+  lodging: Place,
+): string {
+  const pathKm = pathLengthKm(ordered);
+  const fromStay =
+    ordered.length > 0 ? distanceKm(lodging, ordered[0]) : 0;
+  const bits = [
+    `Today stays in ${area} — one pocket of the city, so you are not zigzagging across town.`,
+  ];
+  if (ordered.length > 1) {
+    bits.push(
+      `About ${pathKm.toFixed(1)} km walking between stops` +
+        (fromStay > 0.8
+          ? `, plus ~${fromStay.toFixed(1)} km from your stay to the first stop.`
+          : "."),
+    );
+  } else if (fromStay > 0.8) {
+    bits.push(`Your stay is about ${fromStay.toFixed(1)} km from this pocket.`);
+  }
   if (prefs.walking === "easy" || prefs.accessibility === "yes") {
     bits.push("Walks are kept shorter where possible.");
   } else if (prefs.walking === "long" || prefs.transport === "taxis") {
     bits.push("Longer hops are OK if needed.");
-  } else {
-    bits.push("Stops are ordered so you don't zigzag.");
   }
   if (prefs.dayStart === "late") bits.push("It starts gently for a later morning.");
   if (prefs.dayStart === "early") bits.push("More of the strong stops sit in the morning.");
@@ -914,6 +932,14 @@ function routeNoteFor(area: string, prefs: Preferences): string {
   if (prefs.shoppingTime === "yes") bits.push("Shopping time is worked into the mix.");
   if (prefs.meals === "skip") bits.push("Meals are left open for you to choose.");
   return bits.join(" ");
+}
+
+function pathLengthKm(places: Place[]): number {
+  let total = 0;
+  for (let i = 1; i < places.length; i += 1) {
+    total += distanceKm(places[i - 1], places[i]);
+  }
+  return total;
 }
 
 function foldText(value: string): string {
@@ -979,9 +1005,16 @@ function limitMuseums(
   return result;
 }
 
-function dayTitle(anchor: Place, center: { lat: number; lon: number }): string {
-  if (distanceKm(center, anchor) < 0.45) return `City center · ${anchor.name}`;
-  return `${anchor.area} · ${compass(center, anchor)}`;
+function dayTitle(
+  area: string,
+  anchor: Place | undefined,
+  center: { lat: number; lon: number },
+): string {
+  if (!anchor) return `A day in ${area}`;
+  if (distanceKm(center, anchor) < 0.45) {
+    return `City center day · anchored at ${anchor.name}`;
+  }
+  return `${area} day · ${compass(center, anchor)}`;
 }
 
 function commonArea(places: Place[]): string | undefined {

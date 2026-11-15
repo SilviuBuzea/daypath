@@ -18,6 +18,7 @@ export const london: CityCatalog = {
       "Westminster",
       10,
       "Coronation church and royal resting place — book timed entry when you can.",
+      { flags: ["ticket", "early", "touristy"] },
     ),
     place(
       "ldn-bigben",
@@ -29,6 +30,7 @@ export const london: CityCatalog = {
       "Westminster",
       10,
       "The classic riverside silhouette; best photos from Westminster Bridge or the South Bank.",
+      { flags: ["free", "touristy"] },
     ),
     place(
       "ldn-horse-guards",

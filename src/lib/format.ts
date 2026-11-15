@@ -1,5 +1,12 @@
 import { distanceKm } from "./geo";
-import type { Place, Point, Stop } from "./types";
+import type { Place, PlaceFlag, Point, Stop } from "./types";
+
+const FLAG_LABEL: Record<PlaceFlag, string> = {
+  ticket: "Book / ticket",
+  early: "Go early",
+  free: "Free",
+  touristy: "Touristy",
+};
 
 export function placeLine(place: Place): string {
   const parts = [place.label, place.area];
@@ -9,10 +16,41 @@ export function placeLine(place: Place): string {
 
 export function walkLabel(km: number): string {
   const minutes = Math.max(1, Math.round((km / 4.5) * 60));
-  if (km < 0.25) return "A couple of minutes on foot";
-  if (km <= 1.6) return `${minutes} min walk`;
-  if (km <= 5) return `${minutes} min on foot, or a short ride`;
-  return `About ${km.toFixed(1)} km — better as a short ride`;
+  const kmText = km < 0.1 ? "<0.1 km" : `${km.toFixed(km < 1 ? 1 : 1)} km`;
+  if (km < 0.25) return `${kmText} · a couple of minutes on foot`;
+  if (km <= 1.6) return `${kmText} · ~${minutes} min walk`;
+  if (km <= 5) return `${kmText} · ~${minutes} min walk, or a short ride`;
+  return `${kmText} · better as a short ride (~${minutes} min walk)`;
+}
+
+/** Merge explicit catalog flags with light inference from copy. */
+export function placeFlags(place: Place): PlaceFlag[] {
+  const found = new Set<PlaceFlag>(place.flags ?? []);
+  const text = `${place.why} ${place.tip ?? ""} ${place.label}`.toLowerCase();
+
+  if (/book timed|book ahead|timed entry|tickets?|reserve|skip[- ]the[- ]line/.test(text)) {
+    found.add("ticket");
+  }
+  if (/go early|before (the )?crowds|early for|morning for fewer/.test(text)) {
+    found.add("early");
+  }
+  if (
+    /free entry|free museum|free rooftop|no ticket|without (a )?ticket|open park|no admission/.test(
+      text,
+    ) ||
+    (place.category === "nature" && /park|garden|viewpoint|beach/.test(place.label.toLowerCase()))
+  ) {
+    found.add("free");
+  }
+  if (/touristy|crowded|postcard|classic photo|queue/.test(text) || place.score >= 10) {
+    if (place.category === "sight" || place.category === "museum") found.add("touristy");
+  }
+
+  return (["ticket", "early", "free", "touristy"] as PlaceFlag[]).filter((flag) => found.has(flag));
+}
+
+export function flagLabel(flag: PlaceFlag): string {
+  return FLAG_LABEL[flag];
 }
 
 export function legKm(from: Point, to: Point): number {

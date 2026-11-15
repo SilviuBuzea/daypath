@@ -233,7 +233,10 @@ export const bucharest: CityCatalog = {
       "Civic Center",
       10,
       "One of the world’s largest administrative buildings — book a guided tour; security queues are real.",
-      { tip: "Combine with Izvor Park and Unirii views rather than racing back to Old Town on foot." },
+      {
+        tip: "Combine with Izvor Park and Unirii views rather than racing back to Old Town on foot.",
+        flags: ["ticket", "touristy"],
+      },
     ),
     place(
       "bu-izvor",

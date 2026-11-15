@@ -8,7 +8,7 @@ export const paris: CityCatalog = {
   center: { lat: 48.8566, lon: 2.3522 },
   places: [
     // ——— Louvre / 1st ———
-    place("pa-louvre", "Louvre Museum", 48.8606, 2.3376, "museum", "Museum", "1st", 10, "Don't try to see it all — pick a wing and book timed entry."),
+    place("pa-louvre", "Louvre Museum", 48.8606, 2.3376, "museum", "Museum", "1st", 10, "Don't try to see it all — pick a wing and book timed entry.", { flags: ["ticket", "early", "touristy"] }),
     place("pa-tuileries", "Jardin des Tuileries", 48.8635, 2.3273, "nature", "Park", "1st", 8, "Formal park between the Louvre and Place de la Concorde."),
     place("pa-concorde", "Place de la Concorde", 48.8656, 2.3212, "sight", "Attraction", "8th", 7, "Obelisk square linking Tuileries and the Champs-Élysées."),
     place("pa-orangerie", "Musée de l'Orangerie", 48.8638, 2.3227, "museum", "Museum", "1st", 8, "Monet's Water Lilies in oval rooms beside the Tuileries."),
@@ -26,10 +26,10 @@ export const paris: CityCatalog = {
     place("pa-shakespeare", "Shakespeare and Company", 48.8526, 2.3472, "shopping", "Market", "5th", 6, "Legendary English bookshop facing Notre-Dame."),
 
     // ——— Orsay / Left Bank / 7th ———
-    place("pa-orsay", "Musée d'Orsay", 48.86, 2.3266, "museum", "Museum", "7th", 10, "Impressionists in a former station — pair with a Seine walk."),
+    place("pa-orsay", "Musée d'Orsay", 48.86, 2.3266, "museum", "Museum", "7th", 10, "Impressionists in a former station — pair with a Seine walk. Book timed entry when you can.", { flags: ["ticket"] }),
     place("pa-rodin", "Musée Rodin", 48.8553, 2.3158, "museum", "Museum", "7th", 8, "Sculpture museum with a calm garden near Invalides."),
     place("pa-invalides", "Les Invalides", 48.8565, 2.3126, "sight", "Monument", "7th", 8, "Dome of Napoleon's tomb and army museums."),
-    place("pa-eiffel", "Eiffel Tower", 48.8584, 2.2945, "sight", "Attraction", "7th", 10, "Book summit or second-floor tickets; Champ de Mars for free views."),
+    place("pa-eiffel", "Eiffel Tower", 48.8584, 2.2945, "sight", "Attraction", "7th", 10, "Book summit or second-floor tickets; Champ de Mars for free views.", { flags: ["ticket", "touristy"] }),
     place("pa-champ-mars", "Champ de Mars", 48.8555, 2.298, "nature", "Park", "7th", 7, "Lawn in front of the tower for picnic photos."),
     place("pa-trocadero", "Trocadéro viewpoint", 48.8615, 2.289, "sight", "Viewpoint", "16th", 8, "Classic Eiffel Tower photo terrace across the river."),
     place("pa-quai-branly", "Musée du Quai Branly", 48.8608, 2.2975, "museum", "Museum", "7th", 7, "World cultures museum near the tower."),

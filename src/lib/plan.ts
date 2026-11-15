@@ -330,22 +330,21 @@ function assembleDay(
           .sort((a, b) => b.score - a.score)
           .slice(0, perDay);
 
-  // Walk inside the day's neighborhood. The ride from lodging is allowed to be longer.
-  const localStart = seed.sort((a, b) => b.score - a.score)[0] ?? itinerary.lodging;
-  let ordered = orderFrom(localStart, seed.filter((place) => place.id !== localStart.id));
-  if (localStart.id !== itinerary.lodging.id) ordered = [localStart, ...ordered];
-  ordered = tighten(ordered, itinerary.catalog.activities, blocked, pinned, localStart, maxLeg);
-  ordered = orderFrom(localStart, ordered.filter((place) => place.id !== localStart.id));
-  if (!ordered.some((place) => place.id === localStart.id)) ordered = [localStart, ...ordered];
+  // Keep the day in one walking pocket: drop geographic outliers, then order without backtracking.
+  let ordered = makeCoherent(seed, itinerary.catalog.activities, blocked, pinned, perDay, maxLeg);
+  ordered = tighten(ordered, itinerary.catalog.activities, blocked, pinned, itinerary.lodging, maxLeg);
+  ordered = orderDayRoute(itinerary.lodging, ordered);
   ordered = limitMuseums(
     ordered,
     prefs.maxMuseums,
     itinerary.catalog.activities,
     blocked,
     pinned,
-    localStart,
+    itinerary.lodging,
     maxLeg,
   );
+  ordered = orderDayRoute(itinerary.lodging, ordered);
+  ordered = trimLongHops(ordered, maxLeg);
 
   const used = new Set(blocked);
   used.add(itinerary.lodging.id);
@@ -452,13 +451,18 @@ function planDays(activities: Place[], requestedDays: number, perDay: number, ra
 
   for (const item of ranked) {
     const options = anchors
-      .map((anchor, index) => ({ index, gap: distanceKm(anchor, item.place) }))
-      .filter((option) => clusters[option.index].length < perDay && option.gap <= cap)
+      .map((anchor, index) => {
+        const sameArea =
+          item.place.area === anchor.area ||
+          clusters[index].some((member) => member.area === item.place.area);
+        const gap = distanceKm(anchor, item.place) - (sameArea ? 0.85 : 0);
+        return { index, gap, raw: distanceKm(anchor, item.place) };
+      })
+      .filter((option) => clusters[option.index].length < perDay && option.raw <= cap)
       .sort((a, b) => a.gap - b.gap || clusters[a.index].length - clusters[b.index].length);
     const fallback =
-      item.bestDistance <= cap && clusters[item.best].length < perDay
-        ? item.best
-        : options[0]?.index;
+      options[0]?.index ??
+      (item.bestDistance <= cap && clusters[item.best].length < perDay ? item.best : undefined);
     if (fallback === undefined) continue;
     clusters[fallback].push(item.place);
     assigned.add(item.place.id);
@@ -466,23 +470,115 @@ function planDays(activities: Place[], requestedDays: number, perDay: number, ra
 
   const unused = sorted.filter((place) => !assigned.has(place.id));
   for (const cluster of clusters) {
-    while (cluster.length < Math.min(perDay, 3) && unused.length > 0) {
+    const hub = centroid(cluster);
+    const fillUntil = Math.max(2, Math.min(perDay, 3));
+    while (cluster.length < fillUntil && unused.length > 0) {
       let bestIndex = 0;
       let bestDistance = Infinity;
       unused.forEach((place, index) => {
-        const gap = distanceKm(cluster[0], place);
+        const sameArea = cluster.some((member) => member.area === place.area);
+        const gap = distanceKm(hub, place) - (sameArea ? 0.7 : 0);
         if (gap < bestDistance) {
           bestDistance = gap;
           bestIndex = index;
         }
       });
-      if (bestDistance > 8) break;
+      // Allow a slightly longer fill only when the day is still almost empty.
+      const limit = cluster.length < 2 ? 4.5 : 2.6;
+      if (bestDistance > limit) break;
       const [next] = unused.splice(bestIndex, 1);
       cluster.push(next);
     }
   }
 
   return clusters.filter((cluster) => cluster.length > 0);
+}
+
+/** Nearest-neighbor path, then 2-opt, oriented so the first stop is closer to lodging. */
+function orderDayRoute(lodging: { lat: number; lon: number }, places: Place[]): Place[] {
+  if (places.length <= 1) return [...places];
+  let ordered = orderFrom(lodging, places);
+  ordered = twoOpt(ordered);
+  if (
+    ordered.length >= 2 &&
+    distanceKm(lodging, ordered[ordered.length - 1]) < distanceKm(lodging, ordered[0])
+  ) {
+    ordered = [...ordered].reverse();
+  }
+  return ordered;
+}
+
+/** Drop far outliers and refill from nearby catalog places so a day stays walkable. */
+function makeCoherent(
+  seed: Place[],
+  sparePool: Place[],
+  blocked: Set<string>,
+  pinned: Set<string>,
+  perDay: number,
+  maxSpreadKm: number,
+): Place[] {
+  const unique = uniquePlaces(seed);
+  if (unique.length <= 2) return unique;
+
+  const byArea = new Map<string, Place[]>();
+  for (const place of unique) {
+    const list = byArea.get(place.area) ?? [];
+    list.push(place);
+    byArea.set(place.area, list);
+  }
+  const dominant =
+    [...byArea.entries()].sort(
+      (a, b) =>
+        b[1].length - a[1].length ||
+        b[1].reduce((sum, place) => sum + place.score, 0) -
+          a[1].reduce((sum, place) => sum + place.score, 0),
+    )[0]?.[1] ?? unique;
+
+  const hub = centroid(dominant);
+  const spread = Math.max(1.2, Math.min(maxSpreadKm * 0.75, 1.8));
+  const kept = unique.filter(
+    (place) =>
+      pinned.has(place.id) ||
+      dominant.some((member) => member.id === place.id) ||
+      distanceKm(hub, place) <= spread,
+  );
+  const need = Math.min(perDay, Math.max(kept.length, dominant.length));
+  if (kept.length >= need) return orderByScore(kept).slice(0, need);
+
+  const keptIds = new Set(kept.map((place) => place.id));
+  const fillers = sparePool
+    .filter((place) => !blocked.has(place.id) && !keptIds.has(place.id))
+    .map((place) => ({
+      place,
+      gap:
+        distanceKm(hub, place) -
+        (place.area === dominant[0]?.area ? 0.7 : 0),
+    }))
+    .filter((item) => item.gap <= spread + 0.35)
+    .sort((a, b) => a.gap - b.gap || b.place.score - a.place.score);
+
+  const result = [...kept];
+  for (const item of fillers) {
+    if (result.length >= need) break;
+    result.push(item.place);
+  }
+  return result;
+}
+
+function orderByScore(places: Place[]): Place[] {
+  return [...places].sort((a, b) => b.score - a.score);
+}
+
+/** Stop the day before a long hop that would send you across town and back. */
+function trimLongHops(ordered: Place[], maxLeg: number): Place[] {
+  if (ordered.length <= 2) return ordered;
+  const kept = [ordered[0]];
+  for (let index = 1; index < ordered.length; index += 1) {
+    const gap = distanceKm(kept[kept.length - 1], ordered[index]);
+    if (gap > maxLeg + 0.35 && kept.length >= 2) break;
+    kept.push(ordered[index]);
+  }
+  return kept;
 }
 
 function orderFrom(start: { lat: number; lon: number }, places: Place[]): Place[] {
@@ -504,6 +600,31 @@ function orderFrom(start: { lat: number; lon: number }, places: Place[]): Place[
     current = next;
   }
   return ordered;
+}
+
+function twoOpt(places: Place[]): Place[] {
+  if (places.length < 4) return places;
+  const route = [...places];
+  let improved = true;
+  while (improved) {
+    improved = false;
+    for (let i = 0; i < route.length - 2; i += 1) {
+      for (let k = i + 2; k < route.length; k += 1) {
+        const a = route[i];
+        const b = route[i + 1];
+        const c = route[k];
+        const d = k + 1 < route.length ? route[k + 1] : null;
+        const before = distanceKm(a, b) + (d ? distanceKm(c, d) : 0);
+        const after = distanceKm(a, c) + (d ? distanceKm(b, d) : 0);
+        if (after + 0.01 < before) {
+          const reversed = route.slice(i + 1, k + 1).reverse();
+          route.splice(i + 1, k - i, ...reversed);
+          improved = true;
+        }
+      }
+    }
+  }
+  return route;
 }
 
 function tighten(

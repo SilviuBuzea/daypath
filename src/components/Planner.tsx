@@ -65,7 +65,8 @@ export default function Planner() {
 
   useEffect(() => {
     const stored = loadPreferences();
-    if (stored) setPrefs({ ...DEFAULT_PREFERENCES, ...stored });
+    // Always start with a blank city field; restore other saved preferences.
+    if (stored) setPrefs({ ...DEFAULT_PREFERENCES, ...stored, destination: "" });
     setSavedTrips(listSavedTrips());
     setPrefsReady(true);
   }, []);
@@ -185,6 +186,16 @@ export default function Planner() {
                 setCityOpen(true);
               }}
               onFocus={() => setCityOpen(true)}
+              onBlur={(event) => {
+                const value = event.target.value.trim();
+                if (!value) {
+                  setCityError(null);
+                  return;
+                }
+                if (!matchCityCatalog(value)) {
+                  setCityError(unsupportedCityMessage(value));
+                }
+              }}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
                   event.preventDefault();

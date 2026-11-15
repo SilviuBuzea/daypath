@@ -76,8 +76,9 @@ export function matchCityCatalog(destination: string): CityCatalog | null {
 }
 
 export function unsupportedCityMessage(destination: string): string {
-  const typed = destination.trim() || "That city";
-  return `${typed} is not supported yet. Try a city from the list — London, Paris, and other top destinations are fully detailed.`;
+  const typed = destination.trim();
+  if (!typed) return "Enter a city name, or pick one from the list.";
+  return `${typed} is not supported. Pick a city from the list — European capitals and top destinations like London, Paris, Tokyo, and New York.`;
 }
 
 export function findCityCatalog(destination: string): CityCatalog {

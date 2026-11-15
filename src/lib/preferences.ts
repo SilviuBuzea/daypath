@@ -1,7 +1,7 @@
 import { INTERESTS, type Interest, type Preferences } from "./types";
 
 export const DEFAULT_PREFERENCES: Preferences = {
-  destination: "London",
+  destination: "",
   days: 3,
   pace: "balanced",
   budget: "mid",

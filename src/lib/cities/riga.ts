@@ -1,0 +1,123 @@
+import type { CityCatalog } from "../types";
+import { place } from "./helpers";
+
+export const riga: CityCatalog = {
+  id: "riga",
+  name: "Riga, Latvia",
+  aliases: ["riga"],
+  center: { lat: 56.9496, lon: 24.1052 },
+  places: [
+    // ——— Old Town / Vecrīga ———
+    place("ri-blackheads", "House of the Blackheads", 56.9472, 24.1069, "sight", "Monument", "Old Town", 9, "Rebuilt Hanseatic guild house on Town Hall Square."),
+    place("ri-town-hall", "Rātslaukums", 56.9475, 24.1065, "sight", "Attraction", "Old Town", 8, "Town Hall Square with Roland statue and Blackheads."),
+    place("ri-dome", "Riga Cathedral", 56.9493, 24.1048, "sight", "Monument", "Old Town", 9, "Brick Gothic cathedral with famous organ concerts."),
+    place("ri-st-peter", "St. Peter's Church Tower", 56.9475, 24.1085, "sight", "Viewpoint", "Old Town", 9, "Elevator to the best Old Town panorama."),
+    place("ri-st-john", "St. John's Church", 56.9478, 24.1092, "sight", "Monument", "Old Town", 6, "Gothic church with carved portals near the walls."),
+    place("ri-powder", "Powder Tower", 56.9512, 24.1085, "sight", "Monument", "Old Town", 7, "Sole surviving medieval tower — war museum inside."),
+    place("ri-swedish-gate", "Swedish Gate", 56.9515, 24.1075, "sight", "Attraction", "Old Town", 6, "Only remaining city gate from the Swedish era."),
+    place("ri-three-brothers", "Three Brothers", 56.9498, 24.1055, "sight", "Monument", "Old Town", 7, "Trio of medieval houses — oldest dwelling complex."),
+    place("ri-riga-castle", "Riga Castle", 56.9508, 24.1005, "sight", "Castle", "Old Town", 7, "Presidential residence on the Daugava bank."),
+    place("ri-livu", "Līvu Square", 56.9485, 24.1085, "sight", "Attraction", "Old Town", 6, "Cat House views and outdoor cafes."),
+    place("ri-cat-house", "Cat House", 56.9495, 24.1082, "sight", "Attraction", "Old Town", 6, "Roof cats once aimed at the Great Guild."),
+    place("ri-great-guild", "Great Guild", 56.9498, 24.1075, "sight", "Monument", "Old Town", 6, "Merchant guild hall now a concert venue."),
+    place("ri-small-guild", "Small Guild", 56.9495, 24.1078, "sight", "Monument", "Old Town", 5, "Craftsmen's guild opposite the Great Guild."),
+    place("ri-freedom", "Freedom Monument", 56.9515, 24.1132, "sight", "Monument", "Centrs", 9, "National symbol between Old Town and the boulevards."),
+    place("ri-bastejkalns", "Bastejkalns Park", 56.9515, 24.11, "nature", "Park", "Centrs", 7, "Canal park linking Old Town to the Art Nouveau district."),
+    place("ri-canal", "City Canal walk", 56.9525, 24.1125, "nature", "Park", "Centrs", 7, "Tree-lined canal path with boat rides in summer."),
+    place("ri-national-opera", "Latvian National Opera", 56.9495, 24.1135, "sight", "Monument", "Centrs", 8, "Neo-classical opera house by the canal."),
+    place("ri-railway", "Riga Central Station area", 56.9465, 24.1205, "sight", "Attraction", "Centrs", 5, "Arrival hub beside the Central Market."),
+
+    // ——— Art Nouveau / Centrs ———
+    place("ri-alberta", "Alberta iela", 56.9592, 24.1095, "sight", "Attraction", "Art Nouveau", 10, "Riga's densest stretch of Jugendstil façades."),
+    place("ri-elisabeth", "Elizabetes iela walk", 56.9575, 24.1125, "sight", "Attraction", "Art Nouveau", 8, "More Art Nouveau gems toward the parks."),
+    place("ri-artnouveau-museum", "Art Nouveau Museum", 56.9595, 24.1098, "museum", "Museum", "Art Nouveau", 8, "Apartment museum in a Pekšēns-designed house."),
+    place("ri-national-art", "Latvian National Museum of Art", 56.9555, 24.114, "museum", "Museum", "Centrs", 8, "Reopened national collection in a grand pavilion."),
+    place("ri-esplanade", "Esplanade Park", 56.9555, 24.1165, "nature", "Park", "Centrs", 6, "Open lawns beside the art museum."),
+    place("ri-nativity", "Nativity of Christ Cathedral", 56.9542, 24.1155, "sight", "Monument", "Centrs", 7, "Golden-domed Orthodox cathedral on the Esplanade."),
+    place("ri-vermanes", "Vērmane Garden", 56.9535, 24.1185, "nature", "Park", "Centrs", 6, "Oldest public garden with a summer pavilion."),
+    place("ri-kronvalda", "Kronvalda Park", 56.9585, 24.1055, "nature", "Park", "Centrs", 6, "Park along the canal toward the university."),
+    place("ri-university", "University of Latvia main building", 56.9505, 24.1155, "sight", "Attraction", "Centrs", 5, "Neo-classical campus landmark."),
+
+    // ——— Markets / Maskavas / Outer ———
+    place("ri-central-market", "Riga Central Market", 56.9435, 24.1145, "shopping", "Market", "Maskavas", 9, "Europe's largest market in five Zeppelin hangars."),
+    place("ri-spikeri", "Spīķeri Quarter", 56.9425, 24.1185, "sight", "Attraction", "Maskavas", 7, "Brick warehouse district with galleries and restaurants."),
+    place("ri-moscow", "Maskavas forštate walk", 56.9415, 24.1225, "sight", "Attraction", "Maskavas", 6, "Multicultural suburb with wooden houses and synagogues."),
+    place("ri-academy", "Academy of Sciences viewing platform", 56.9435, 24.1215, "sight", "Viewpoint", "Maskavas", 7, "Stalinist tower with city views."),
+    place("ri-victory", "Victory Park", 56.9355, 24.0855, "nature", "Park", "Pārdaugava", 5, "Large park across the Daugava."),
+    place("ri-zigfrids", "Ziedoņdārzs", 56.9625, 24.1355, "nature", "Park", "Centrs", 5, "Quiet garden park northeast of the centre."),
+    place("ri-mejpark", "Mežaparks", 56.9855, 24.1555, "nature", "Park", "Mežaparks", 7, "Forest park with zoo and open-air concert stage."),
+    place("ri-zoo", "Riga Zoo", 56.9865, 24.1585, "sight", "Attraction", "Mežaparks", 6, "City zoo inside Mežaparks woodland."),
+    place("ri-jugla", "Lake Jugla area", 56.9855, 24.1855, "nature", "Park", "Jugla", 5, "Lakeside nature on the city's eastern edge."),
+    place("ri-ab-dambis", "AB Dambis pier", 56.9555, 24.0855, "sight", "Viewpoint", "Ķīpsala", 6, "Daugava viewpoint toward Old Town."),
+    place("ri-national-library", "National Library of Latvia", 56.9405, 24.0965, "sight", "Monument", "Pārdaugava", 8, "Castle of Light — Gaismas pils by the river."),
+    place("ri-vanšu", "Vanšu Bridge walk", 56.9515, 24.0955, "sight", "Attraction", "Daugava", 6, "Cable-stayed bridge linking both banks."),
+
+    // ——— Museums ———
+    place("ri-occupation", "Museum of the Occupation of Latvia", 56.9475, 24.1062, "museum", "Museum", "Old Town", 8, "Soviet and Nazi occupation history on Town Hall Square."),
+    place("ri-war", "War Museum", 56.9512, 24.1088, "museum", "Museum", "Old Town", 7, "Military history inside the Powder Tower complex."),
+    place("ri-history", "Museum of the History of Riga", 56.9495, 24.1045, "museum", "Museum", "Old Town", 7, "City history beside the cathedral."),
+    place("ri-ethnographic", "Open-Air Ethnographic Museum", 56.9955, 24.2655, "museum", "Museum", "Jugla", 8, "Historic farmsteads on Lake Jugla."),
+    place("ri-motor", "Riga Motor Museum", 56.9755, 24.2255, "museum", "Museum", "Mežciems", 7, "Classic cars and Soviet vehicles."),
+    place("ri-photography", "Museum of Photography", 56.9485, 24.1085, "museum", "Museum", "Old Town", 6, "Historic photos in Old Town."),
+    place("ri-jews", "Jews in Latvia Museum", 56.9515, 24.1185, "museum", "Museum", "Centrs", 6, "Jewish community history."),
+    place("ri-decorative", "Museum of Decorative Arts", 56.9482, 24.1095, "museum", "Museum", "Old Town", 6, "Applied arts in St. George's Church."),
+    place("ri-natural", "Natural History Museum", 56.9535, 24.1155, "museum", "Museum", "Centrs", 5, "Nature collections near the canal."),
+    place("ri-kino", "Riga Art Space / contemporary shows", 56.9485, 24.1105, "museum", "Museum", "Old Town", 5, "Rotating contemporary exhibitions."),
+
+    // ——— Shopping ———
+    place("ri-galerija", "Galerija Centrs", 56.9485, 24.1125, "shopping", "Market", "Centrs", 6, "Mall in a historic shopping passage."),
+    place("ri-berg", "Berga Bazārs", 56.9545, 24.1205, "shopping", "Market", "Centrs", 7, "Courtyard shops, cafes, and design stores."),
+    place("ri-stockmann", "Stockmann Riga", 56.9515, 24.1205, "shopping", "Market", "Centrs", 5, "Department store near the station."),
+    place("ri-akalats", "Kalnciema Quarter market", 56.9455, 24.0755, "shopping", "Market", "Pārdaugava", 7, "Weekend crafts and food market in wooden buildings."),
+
+    // ——— Cafes ———
+    place("ri-cafe-miiets", "Miiets", 56.9585, 24.1105, "cafe", "Cafe", "Art Nouveau", 7, "Specialty coffee near Alberta iela.", { cuisine: "coffee" }),
+    place("ri-cafe-rocket", "Rocket Bean Roastery", 56.9545, 24.1215, "cafe", "Cafe", "Centrs", 8, "Local roastery cafe with serious espresso.", { cuisine: "coffee" }),
+    place("ri-cafe-kz", "Kaņepes Kultūras centrs cafe", 56.9575, 24.1215, "cafe", "Cafe", "Centrs", 6, "Culture-house cafe and bar.", { cuisine: "coffee" }),
+    place("ri-cafe-florist", "Florist & Coffee", 56.9525, 24.1155, "cafe", "Cafe", "Centrs", 6, "Flower-shop cafe near the canal.", { cuisine: "coffee" }),
+    place("ri-cafe-ozolt", "Ozolt café", 56.9485, 24.1075, "cafe", "Cafe", "Old Town", 6, "Quiet Old Town coffee stop.", { cuisine: "coffee" }),
+    place("ri-cafe-sirmois", "Sirmois", 56.9555, 24.1185, "cafe", "Cafe", "Centrs", 7, "Brunch favourite in the centre.", { cuisine: "brunch coffee" }),
+    place("ri-cafe-bioteka", "Biotēka", 56.9545, 24.1165, "cafe", "Cafe", "Centrs", 6, "Organic cafe and shop.", { cuisine: "organic coffee" }),
+    place("ri-cafe-double", "Double Coffee", 56.9495, 24.1085, "cafe", "Cafe", "Old Town", 5, "Chain cafe handy for a quick stop.", { cuisine: "coffee" }),
+
+    // ——— Food ———
+    place("ri-food-3pavari", "3 Pavāru Restorāns", 56.9515, 24.1055, "food", "Restaurant", "Old Town", 8, "Three Chefs modern Latvian near the castle.", { cuisine: "latvian" }),
+    place("ri-food-neiburgs", "Neiburgs Restaurant", 56.9485, 24.1088, "food", "Restaurant", "Old Town", 8, "Fine dining in a boutique hotel.", { cuisine: "european latvian" }),
+    place("ri-food-biblioteka", "Bibliotēka No.1", 56.9505, 24.1125, "food", "Restaurant", "Centrs", 7, "Bookish dining room with seasonal menus.", { cuisine: "european" }),
+    place("ri-food-key", "Key to Riga", 56.9478, 24.1075, "food", "Restaurant", "Old Town", 6, "Latvian classics aimed at visitors.", { cuisine: "latvian" }),
+    place("ri-food-lido", "Lido Alus Sēta", 56.9485, 24.1105, "food", "Restaurant", "Old Town", 7, "Self-service Latvian comfort food.", { cuisine: "latvian" }),
+    place("ri-food-tam", "Tails", 56.9545, 24.1195, "food", "Restaurant", "Centrs", 7, "Seafood-focused modern plates.", { cuisine: "seafood" }),
+    place("ri-food-valtera", "Valtera Restorāns", 56.9535, 24.1215, "food", "Restaurant", "Centrs", 7, "Neighbourhood favourite for Latvian fare.", { cuisine: "latvian" }),
+    place("ri-food-kiploka", "Ķiploku Krogs", 56.9482, 24.1095, "food", "Restaurant", "Old Town", 6, "Garlic-themed Latvian tavern.", { cuisine: "latvian" }),
+    place("ri-food-market", "Central Market bites", 56.9438, 24.1148, "food", "Quick meal", "Maskavas", 7, "Fresh produce, smoked fish, and pirogi stalls.", { cuisine: "latvian street_food" }),
+    place("ri-food-spikeri", "Spīķeri riverside dinner", 56.9428, 24.1188, "food", "Restaurant", "Maskavas", 6, "Warehouse restaurants by the Daugava.", { cuisine: "european" }),
+    place("ri-food-veg", "Vegāns", 56.9555, 24.1175, "food", "Restaurant", "Centrs", 6, "Plant-based Latvian options.", { cuisine: "vegan" }),
+    place("ri-food-steaks", "Steak House burger stop", 56.9525, 24.1145, "food", "Restaurant", "Centrs", 5, "Casual steaks near the opera.", { cuisine: "steak" }),
+    place("ri-food-india", "Indian Raja", 56.9515, 24.1165, "food", "Restaurant", "Centrs", 5, "Reliable Indian near the boulevards.", { cuisine: "indian" }),
+    place("ri-food-sushi", "Sushi Place Centrs", 56.9545, 24.1155, "food", "Restaurant", "Centrs", 5, "Sushi break between museums.", { cuisine: "japanese" }),
+
+    // ——— Nightlife ———
+    place("ri-night-folk", "Folkklubs Ala Pagrabs", 56.9485, 24.1072, "nightlife", "Bar", "Old Town", 8, "Cellar folk club with live Latvian music."),
+    place("ri-night-skyline", "Skyline Bar", 56.9505, 24.1205, "nightlife", "Bar", "Centrs", 8, "26th-floor cocktails over Riga."),
+    place("ri-night-cuba", "Cuba Cafe", 56.9488, 24.1085, "nightlife", "Bar", "Old Town", 6, "Late Old Town bar on Jauniela."),
+    place("ri-night-labietis", "Labietis", 56.9625, 24.1355, "nightlife", "Bar", "Centrs", 7, "Craft brewery with experimental Latvian beers."),
+    place("ri-night-piens", "Piens", 56.9585, 24.1255, "nightlife", "Bar", "Centrs", 6, "Alternative club and cultural space."),
+    place("ri-night-dore", "Dore", 56.9495, 24.1095, "nightlife", "Bar", "Old Town", 6, "Cocktail bar in Old Town."),
+    place("ri-night-kino", "Kino Bize", 56.9535, 24.1185, "nightlife", "Bar", "Centrs", 6, "Cinema-bar hybrid for films and drinks."),
+    place("ri-night-chalet", "Chalet", 56.9555, 24.1125, "nightlife", "Bar", "Centrs", 5, "Après-ski themed late bar."),
+
+    // ——— Stays ———
+    place("ri-stay-grand", "Grand Hotel Kempinski Riga", 56.9475, 24.1065, "stay", "Hotel", "Old Town", 9, "Luxury on Town Hall Square."),
+    place("ri-stay-neiburgs", "Neiburgs Hotel", 56.9485, 24.1085, "stay", "Hotel", "Old Town", 9, "Design boutique in a restored building."),
+    place("ri-stay-dome", "Dome Hotel & Spa", 56.9495, 24.1045, "stay", "Hotel", "Old Town", 8, "Spa hotel beside the cathedral."),
+    place("ri-stay-radisson", "Radisson Blu Latvija", 56.9545, 24.1205, "stay", "Hotel", "Centrs", 7, "High-rise with Skyline Bar."),
+    place("ri-stay-pullman", "Pullman Riga Old Town", 56.9495, 24.1105, "stay", "Hotel", "Old Town", 8, "Modern luxury near the opera."),
+    place("ri-stay-wellton", "Wellton Riverside Spa Hotel", 56.9485, 24.1025, "stay", "Hotel", "Old Town", 7, "Daugava-facing spa hotel."),
+    place("ri-stay-art", "Art Hotel Riga", 56.9585, 24.1105, "stay", "Hotel", "Art Nouveau", 7, "Stay among Alberta iela façades."),
+    place("ri-stay-centra", "Hotel Centra", 56.9525, 24.1155, "stay", "Hotel", "Centrs", 6, "Mid-range near the Freedom Monument."),
+    place("ri-stay-hostel", "Cinnamon Sally Backpackers", 56.9515, 24.1185, "stay", "Hostel", "Centrs", 6, "Popular central hostel."),
+    place("ri-stay-naughty", "Naughty Squirrel Hostel", 56.9485, 24.1105, "stay", "Hostel", "Old Town", 6, "Lively Old Town hostel."),
+    place("ri-stay-guest", "Art Nouveau guest house", 56.9592, 24.1115, "stay", "Guest house", "Art Nouveau", 6, "B&B in a Jugendstil building."),
+    place("ri-stay-apt", "Old Town apartment", 56.9482, 24.1075, "stay", "Apartment", "Old Town", 7, "Self-catering above cobbled lanes."),
+  ],
+};

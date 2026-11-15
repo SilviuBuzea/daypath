@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  cityCountry,
+  cityLabel,
   cityShortName,
   citySlug,
   getCityBySlug,
@@ -19,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const city = getCityBySlug(slug);
   if (!city) return { title: "City · Daypath" };
-  const name = cityShortName(city);
+  const name = cityLabel(city);
   const title = `${name} itinerary planner · Daypath`;
   const description = `Build a neighborhood-aware day plan for ${name}. Free, no account — sights, meals, and a place to sleep without zigzagging across town.`;
   return {
@@ -36,6 +38,8 @@ export default async function CityPage({ params }: Props) {
   if (!city) notFound();
 
   const name = cityShortName(city);
+  const country = cityCountry(city);
+  const label = cityLabel(city);
   const tip = cityTipFor(city.id, city.name);
   const activities = city.places
     .filter((place) => !["food", "cafe", "nightlife", "stay"].includes(place.category))
@@ -60,6 +64,7 @@ export default async function CityPage({ params }: Props) {
         </Link>
       </p>
       <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">{name}</h1>
+      {country ? <p className="mt-2 text-lg text-muted">{country}</p> : null}
       <p className="mt-4 max-w-xl text-lg text-muted">
         A free day-by-day plan that keeps each day in one neighborhood — with meals, a stay, and
         alternatives for every stop.
@@ -74,7 +79,7 @@ export default async function CityPage({ params }: Props) {
       </div>
 
       <Link
-        href={`/?city=${encodeURIComponent(name)}`}
+        href={`/?city=${encodeURIComponent(label)}`}
         className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 py-3 text-base font-medium text-white"
       >
         Plan a trip to {name}

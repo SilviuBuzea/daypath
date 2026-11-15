@@ -1,0 +1,111 @@
+import type { CityCatalog } from "../types";
+import { place } from "./helpers";
+
+export const athens: CityCatalog = {
+  id: "athens",
+  name: "Athens, Greece",
+  aliases: ["athens", "athina"],
+  center: { lat: 37.9838, lon: 23.7275 },
+  places: [
+    // ——— Acropolis / Plaka ———
+    place("ath-acropolis", "Acropolis", 37.9715, 23.7267, "sight", "Monument", "Acropolis", 10, "Parthenon hill — go early or late for heat and crowds."),
+    place("ath-parthenon", "Parthenon", 37.9716, 23.7267, "sight", "Monument", "Acropolis", 10, "Iconic Doric temple on the Acropolis summit."),
+    place("ath-erechtheion", "Erechtheion", 37.972, 23.7265, "sight", "Monument", "Acropolis", 8, "Caryatid porch on the north side."),
+    place("ath-propylaia", "Propylaea", 37.9718, 23.7255, "sight", "Monument", "Acropolis", 7, "Monumental gateway to the Acropolis."),
+    place("ath-odeon", "Odeon of Herodes Atticus", 37.9707, 23.7245, "sight", "Monument", "Acropolis", 8, "Roman theatre used for summer performances."),
+    place("ath-theatre-dionysus", "Theatre of Dionysus", 37.9702, 23.7278, "sight", "Monument", "Acropolis", 7, "Birthplace of Greek drama on the south slope."),
+    place("ath-acropolis-museum", "Acropolis Museum", 37.9685, 23.7285, "museum", "Museum", "Acropolis", 10, "Parthenon marbles and glass floor over ruins."),
+    place("ath-plaka", "Plaka lanes", 37.9725, 23.73, "sight", "Attraction", "Plaka", 8, "Neoclassical lanes below the Acropolis."),
+    place("ath-anafiotika", "Anafiotika", 37.9728, 23.7285, "sight", "Attraction", "Plaka", 8, "Cycladic whitewashed houses on the north slope."),
+    place("ath-roman-agora", "Roman Agora", 37.9742, 23.7255, "sight", "Ruins", "Monastiraki", 7, "Tower of the Winds and Roman market."),
+    place("ath-tower-winds", "Tower of the Winds", 37.9743, 23.7258, "sight", "Monument", "Monastiraki", 6, "Octagonal ancient clocktower."),
+    place("ath-hadrian-library", "Hadrian's Library", 37.9755, 23.726, "sight", "Ruins", "Monastiraki", 6, "Roman library remains by Monastiraki."),
+    place("ath-hadrian-arch", "Arch of Hadrian", 37.9702, 23.732, "sight", "Monument", "Plaka", 7, "Gateway between old and Roman Athens."),
+    place("ath-olympieion", "Temple of Olympian Zeus", 37.9693, 23.7331, "sight", "Monument", "Plaka", 8, "Colossal Corinthian columns."),
+    place("ath-lysicrates", "Choragic Monument of Lysicrates", 37.9715, 23.7315, "sight", "Monument", "Plaka", 5, "Circular monument in a Plaka square."),
+
+    // ——— Monastiraki / Agora / Psyrri ———
+    place("ath-agora", "Ancient Agora", 37.975, 23.7225, "sight", "Ruins", "Monastiraki", 9, "Hephaisteion and Stoa of Attalos museum."),
+    place("ath-hephaisteion", "Temple of Hephaestus", 37.9756, 23.7215, "sight", "Monument", "Monastiraki", 8, "Best-preserved classical temple in Athens."),
+    place("ath-stoa", "Stoa of Attalos", 37.9748, 23.7235, "museum", "Museum", "Monastiraki", 7, "Rebuilt stoa housing Agora Museum."),
+    place("ath-kerameikos", "Kerameikos", 37.9785, 23.7175, "sight", "Ruins", "Kerameikos", 7, "Ancient cemetery and city walls."),
+    place("ath-monastiraki-square", "Monastiraki Square", 37.9765, 23.7258, "sight", "Attraction", "Monastiraki", 7, "Metro hub with Acropolis views."),
+    place("ath-flea", "Monastiraki Flea Market", 37.9768, 23.7245, "shopping", "Market", "Monastiraki", 7, "Sunday flea and weekday souvenir lanes."),
+    place("ath-psyrri", "Psyrri streets", 37.978, 23.724, "sight", "Attraction", "Psyrri", 7, "Street art, bars, and tavernas."),
+    place("ath-central-market", "Central Market (Varvakios)", 37.9835, 23.7278, "shopping", "Market", "Downtown", 7, "Meat, fish, and spice halls."),
+    place("ath-ermou", "Ermou Street", 37.9765, 23.73, "shopping", "Market", "Downtown", 6, "Main pedestrian shopping street."),
+
+    // ——— Kolonaki / Lycabettus / Museums ———
+    place("ath-lycabettus", "Lycabettus Hill", 37.9815, 23.743, "sight", "Viewpoint", "Kolonaki", 9, "Funicular or hike for city-wide sunset."),
+    place("ath-kolonaki", "Kolonaki Square", 37.9785, 23.7405, "sight", "Attraction", "Kolonaki", 6, "Uscale cafés and gallery streets."),
+    place("ath-benaki", "Benaki Museum", 37.9758, 23.7405, "museum", "Museum", "Kolonaki", 8, "Greek art and culture from prehistory to 20th c."),
+    place("ath-cycladic", "Museum of Cycladic Art", 37.9755, 23.7425, "museum", "Museum", "Kolonaki", 8, "Marble Cycladic figurines."),
+    place("ath-byzantine", "Byzantine and Christian Museum", 37.9745, 23.7455, "museum", "Museum", "Kolonaki", 7, "Icons and Byzantine artifacts."),
+    place("ath-war", "War Museum", 37.9755, 23.745, "museum", "Museum", "Kolonaki", 5, "Greek military history near Hilton."),
+    place("ath-national-arch", "National Archaeological Museum", 37.989, 23.7328, "museum", "Museum", "Exarcheia", 10, "Mask of Agamemnon and Antikythera mechanism."),
+    place("ath-epigraphic", "Epigraphic Museum", 37.9885, 23.7325, "museum", "Museum", "Exarcheia", 5, "Ancient inscriptions beside the NAM."),
+    place("ath-numismatic", "Numismatic Museum", 37.9775, 23.7365, "museum", "Museum", "Downtown", 5, "Coin museum in Schliemann's mansion."),
+    place("ath-national-garden", "National Garden", 37.9735, 23.7375, "nature", "Park", "Syntagma", 7, "Shade paths behind Parliament."),
+    place("ath-syntagma", "Syntagma Square", 37.9755, 23.7345, "sight", "Attraction", "Syntagma", 7, "Parliament and changing of the guard."),
+    place("ath-parliament", "Hellenic Parliament", 37.9753, 23.7355, "sight", "Monument", "Syntagma", 7, "Evzones at the Tomb of the Unknown Soldier."),
+    place("ath-zappeion", "Zappeion", 37.9715, 23.7365, "sight", "Monument", "Syntagma", 6, "Neoclassical hall in the National Garden."),
+    place("ath-panathenaic", "Panathenaic Stadium", 37.9685, 23.741, "sight", "Attraction", "Pangrati", 8, "Marble Olympic stadium of 1896."),
+    place("ath-first-cemetery", "First Cemetery of Athens", 37.9635, 23.7375, "nature", "Park", "Pangrati", 5, "Sculpture-filled historic cemetery."),
+
+    // ——— Gazi / Thisseio / Piraeus day ———
+    place("ath-philopappos", "Philopappos Hill", 37.9675, 23.7215, "nature", "Park", "Acropolis", 8, "Pine paths and Acropolis photo angles."),
+    place("ath-pnyx", "Pnyx", 37.9715, 23.7195, "sight", "Ruins", "Acropolis", 6, "Ancient assembly hill facing the Acropolis."),
+    place("ath-thissio", "Thissio promenade", 37.9765, 23.72, "sight", "Attraction", "Thissio", 7, "Pedestrian Apostolou Pavlou with café views."),
+    place("ath-gazi", "Gazi gasworks (Technopolis)", 37.9775, 23.7145, "sight", "Attraction", "Gazi", 6, "Industrial culture complex and nightlife."),
+    place("ath-stavros", "Stavros Niarchos Foundation Cultural Center", 37.9395, 23.6915, "sight", "Attraction", "Kallithea", 8, "Renzo Piano park, library, and opera."),
+    place("ath-piraeus", "Piraeus harbour", 37.943, 23.647, "sight", "Attraction", "Piraeus", 6, "Ferry port and waterfront — metro or tram."),
+    place("ath-cape-sounion", "Temple of Poseidon (Sounion)", 37.6515, 24.0245, "sight", "Monument", "Sounion", 8, "Sunset cape temple — half-day trip."),
+    place("ath-agora-museum-shop", "Adrianou shops", 37.9755, 23.7245, "shopping", "Market", "Monastiraki", 5, "Craft and jewellery shops below the Agora."),
+    place("ath-athens-mall", "The Mall Athens area", 38.02, 23.795, "shopping", "Mall", "Marousi", 4, "Suburban mall if you need a break."),
+
+    // ——— Cafes ———
+    place("ath-cafe-brettos", "Brettos", 37.9718, 23.7288, "cafe", "Cafe", "Plaka", 7, "Colourful bottle bar-café in Plaka.", { cuisine: "coffee greek" }),
+    place("ath-cafe-taf", "TAF Coffee", 37.9765, 23.7255, "cafe", "Cafe", "Monastiraki", 7, "Specialty coffee near Monastiraki.", { cuisine: "coffee" }),
+    place("ath-cafe-little", "Little Tree Book Café", 37.9725, 23.7315, "cafe", "Cafe", "Plaka", 6, "Bookish café below the Acropolis.", { cuisine: "coffee" }),
+    place("ath-cafe-dino", "Dinos Coffee Bar", 37.9785, 23.74, "cafe", "Cafe", "Kolonaki", 6, "Kolonaki espresso stop.", { cuisine: "coffee" }),
+    place("ath-cafe-six", "Six Dogs", 37.9775, 23.7315, "cafe", "Cafe", "Downtown", 6, "Courtyard café-bar near Ermou.", { cuisine: "coffee brunch" }),
+    place("ath-cafe-joanna", "Joanna's / brunch", 37.978, 23.7245, "cafe", "Cafe", "Psyrri", 6, "Brunch plates in Psyrri.", { cuisine: "brunch coffee" }),
+    place("ath-cafe-floral", "Floral Café", 37.9855, 23.7335, "cafe", "Cafe", "Exarcheia", 6, "Exarcheia intellectual café.", { cuisine: "coffee" }),
+    place("ath-cafe-lycabettus", "Lycabettus café", 37.9815, 23.7435, "cafe", "Cafe", "Kolonaki", 5, "Summit coffee with the view.", { cuisine: "coffee" }),
+
+    // ——— Food ———
+    place("ath-food-diporto", "Diporto", 37.983, 23.7275, "food", "Restaurant", "Downtown", 8, "No-menu taverna by the Central Market.", { cuisine: "greek" }),
+    place("ath-food-kuzina", "Kuzina", 37.9755, 23.7215, "food", "Restaurant", "Thissio", 8, "Modern Greek with Acropolis views.", { cuisine: "greek" }),
+    place("ath-food-mana", "Mani Mani", 37.9695, 23.7315, "food", "Restaurant", "Plaka", 7, "Mani regional cuisine near the Acropolis Museum.", { cuisine: "greek" }),
+    place("ath-food-souvlaki", "Kostas souvlaki", 37.9765, 23.7315, "food", "Quick meal", "Downtown", 8, "Tiny classic souvlaki near Syntagma.", { cuisine: "greek street_food" }),
+    place("ath-food-hoocut", "Hoocut", 37.9775, 23.731, "food", "Quick meal", "Downtown", 7, "Designer souvlaki near Monastiraki.", { cuisine: "greek street_food" }),
+    place("ath-food-seagull", "Seagull / seafood", 37.9435, 23.655, "food", "Restaurant", "Piraeus", 7, "Harbour seafood in Piraeus.", { cuisine: "seafood greek" }),
+    place("ath-food-hytra", "Funky Gourmet / fine dining area", 37.9785, 23.715, "food", "Restaurant", "Gazi", 7, "Upscale Greek near Gazi.", { cuisine: "greek" }),
+    place("ath-food-plaka-tav", "Plaka tavernas", 37.9722, 23.7295, "food", "Restaurant", "Plaka", 6, "Touristy but atmospheric courtyard dinners.", { cuisine: "greek" }),
+    place("ath-food-karamanlidika", "Karamanlidika", 37.9785, 23.7255, "food", "Restaurant", "Psyrri", 7, "Cured meats and meze near the market.", { cuisine: "greek" }),
+    place("ath-food-niforas", "Oinoscent / wine meze", 37.978, 23.735, "food", "Restaurant", "Downtown", 6, "Wine bar plates near Syntagma.", { cuisine: "greek wine" }),
+    place("ath-food-indian", "Indian / break", 37.9775, 23.7355, "food", "Restaurant", "Downtown", 4, "Non-Greek dinner near Syntagma.", { cuisine: "indian" }),
+    place("ath-food-vegan", "Cookoomela", 37.9785, 23.7248, "food", "Quick meal", "Psyrri", 6, "Vegan souvlaki in Psyrri.", { cuisine: "vegan greek" }),
+    place("ath-food-kolonaki", "Kolonaki dinner", 37.9785, 23.7408, "food", "Restaurant", "Kolonaki", 6, "Upscale Greek and international.", { cuisine: "greek mediterranean" }),
+    place("ath-food-loukoumades", "Krinos loukoumades", 37.9768, 23.7285, "food", "Quick meal", "Monastiraki", 6, "Honey doughnuts near the flea market.", { cuisine: "pastry greek" }),
+
+    // ——— Nightlife ———
+    place("ath-night-psyrri", "Psyrri bars", 37.978, 23.7245, "nightlife", "Bar", "Psyrri", 8, "Dense bar crawl streets."),
+    place("ath-night-gazi", "Gazi nightlife", 37.9775, 23.7148, "nightlife", "Bar", "Gazi", 8, "Clubs and late bars around Technopolis."),
+    place("ath-night-brettos", "Brettos night", 37.9718, 23.729, "nightlife", "Bar", "Plaka", 7, "Backlit bottle bar into the evening."),
+    place("ath-night-couleur", "Couleur Locale", 37.9765, 23.7265, "nightlife", "Bar", "Monastiraki", 8, "Rooftop Acropolis views."),
+    place("ath-night-balloon", "The Balloon Bar", 37.9775, 23.7255, "nightlife", "Bar", "Monastiraki", 6, "Rooftop cocktails near Monastiraki."),
+    place("ath-night-exarcheia", "Exarcheia bars", 37.9865, 23.7355, "nightlife", "Bar", "Exarcheia", 6, "Alternative bars and live music."),
+    place("ath-night-beach", "Bolivar / summer clubs", 37.875, 23.74, "nightlife", "Club", "Coast", 5, "Seasonal beach-club strip south of town."),
+
+    // ——— Stays ———
+    place("ath-stay-grande", "Hotel Grande Bretagne", 37.976, 23.735, "stay", "Hotel", "Syntagma", 10, "Landmark luxury on Syntagma Square."),
+    place("ath-stay-electra", "Electra Metropolis", 37.9755, 23.7325, "stay", "Hotel", "Downtown", 8, "Rooftop pool with Acropolis views."),
+    place("ath-stay-herodion", "Herodion Hotel", 37.9685, 23.728, "stay", "Hotel", "Acropolis", 8, "Beside the Acropolis Museum."),
+    place("ath-stay-athenswas", "AthensWas", 37.969, 23.7305, "stay", "Hotel", "Acropolis", 8, "Design hotel near the museum."),
+    place("ath-stay-coco", "Coco-Mat Hotel Athens", 37.9785, 23.74, "stay", "Hotel", "Kolonaki", 7, "Natural-materials boutique in Kolonaki."),
+    place("ath-stay-student", "Athens Hub Hostel", 37.9855, 23.73, "stay", "Hostel", "Exarcheia", 6, "Social hostel north of the center."),
+    place("ath-stay-plaka", "Plaka Hotel", 37.9725, 23.731, "stay", "Hotel", "Plaka", 7, "Rooftop Acropolis views in Plaka."),
+    place("ath-stay-apt", "Monastiraki apartment", 37.9765, 23.726, "stay", "Apartment", "Monastiraki", 7, "Walkable base by the flea market and metro."),
+  ],
+};

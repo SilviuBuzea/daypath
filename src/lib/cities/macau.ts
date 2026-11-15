@@ -3,8 +3,8 @@ import { place } from "./helpers";
 
 export const macau: CityCatalog = {
   id: "macau",
-  name: "Macau",
-  aliases: ["macau", "macao"],
+  name: "Macau, China",
+  aliases: ["macau", "macao", "macau china"],
   center: { lat: 22.1987, lon: 113.5439 },
   places: [
     // ——— Historic Centre / Senado ———

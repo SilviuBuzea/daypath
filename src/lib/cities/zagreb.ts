@@ -1,0 +1,121 @@
+import type { CityCatalog } from "../types";
+import { place } from "./helpers";
+
+export const zagreb: CityCatalog = {
+  id: "zagreb",
+  name: "Zagreb, Croatia",
+  aliases: ["zagreb"],
+  center: { lat: 45.815, lon: 15.9819 },
+  places: [
+    // ——— Ban Jelačić / Lower Town ———
+    place("zag-ban", "Ban Jelačić Square", 45.813, 15.9775, "sight", "Attraction", "Center", 8, "Main square with the ban's statue — Zagreb's meeting point."),
+    place("zag-dolac", "Dolac Market", 45.8142, 15.9778, "shopping", "Market", "Center", 9, "Open-air fruit and flower market above the square."),
+    place("zag-cathedral", "Zagreb Cathedral", 45.8145, 15.9795, "sight", "Monument", "Kaptol", 8, "Twin neo-Gothic spires dominating Kaptol."),
+    place("zag-tkalcic", "Tkalčićeva Street", 45.8158, 15.976, "sight", "Attraction", "Center", 8, "Café-lined former creek bed between Upper and Lower Town."),
+    place("zag-flower", "Flower Square (Cvjetni trg)", 45.8125, 15.9755, "sight", "Attraction", "Center", 6, "Pedestrian square of cafés and flower stalls."),
+    place("zag-bogoviceva", "Bogovićeva Street", 45.8128, 15.9765, "shopping", "Market", "Center", 6, "Shopping lane with the famous Broken Ground sculpture."),
+    place("zag-serpentine", "Radićeva Street", 45.8155, 15.9765, "shopping", "Market", "Center", 6, "Boutique climb toward the Upper Town."),
+    place("zag-zeleni", "Green Horseshoe parks", 45.8085, 15.9785, "nature", "Park", "Lower Town", 7, "U-shaped sequence of 19th-century parks."),
+    place("zag-zrinski", "Zrinjevac Park", 45.8095, 15.9785, "nature", "Park", "Lower Town", 7, "Music pavilion and plane trees on the Green Horseshoe."),
+    place("zag-tomislav", "King Tomislav Square", 45.8055, 15.9785, "sight", "Attraction", "Lower Town", 7, "Art Pavilion and station approach boulevard."),
+    place("zag-art-pavilion", "Art Pavilion", 45.8065, 15.9788, "museum", "Museum", "Lower Town", 6, "Yellow exhibition hall on Tomislav Square."),
+    place("zag-station", "Zagreb Main Station", 45.8045, 15.9785, "sight", "Attraction", "Lower Town", 5, "Orientation hub at the foot of the Green Horseshoe."),
+
+    // ——— Upper Town / Gornji Grad ———
+    place("zag-gornji", "Gornji Grad lanes", 45.8165, 15.9735, "sight", "Attraction", "Upper Town", 9, "Medieval Upper Town of churches, galleries, and viewpoints."),
+    place("zag-lotrscak", "Lotrščak Tower", 45.8155, 15.973, "sight", "Viewpoint", "Upper Town", 8, "Noon cannon and Grič viewpoint over the red roofs."),
+    place("zag-funicular", "Zagreb Funicular", 45.8145, 15.9745, "sight", "Attraction", "Upper Town", 7, "World's shortes public funicular — Lower to Upper Town."),
+    place("zag-stmark", "St. Mark's Church", 45.8165, 15.9738, "sight", "Monument", "Upper Town", 8, "Colourful tiled coat-of-arms roof on St. Mark's Square."),
+    place("zag-parliament", "Croatian Parliament", 45.8162, 15.9742, "sight", "Monument", "Upper Town", 6, "Sabor building facing St. Mark's."),
+    place("zag-banski", "Banski Dvori", 45.816, 15.9735, "sight", "Monument", "Upper Town", 6, "Government palace on St. Mark's Square."),
+    place("zag-stone", "Stone Gate (Kamenita vrata)", 45.8158, 15.9752, "sight", "Monument", "Upper Town", 7, "Chapel gate with candlelit Madonna shrine."),
+    place("zag-broken", "Museum of Broken Relationships", 45.8152, 15.9738, "museum", "Museum", "Upper Town", 9, "Intimate global museum of failed love — Zagreb original."),
+    place("zag-naive", "Croatian Museum of Naïve Art", 45.8155, 15.9735, "museum", "Museum", "Upper Town", 7, "Bright naïve paintings in an Upper Town palace."),
+    place("zag-city-museum", "Zagreb City Museum", 45.8175, 15.9715, "museum", "Museum", "Upper Town", 6, "City history in a former convent."),
+    place("zag-kula", "Grič Tunnel", 45.815, 15.9725, "sight", "Attraction", "Upper Town", 6, "WWII shelter tunnel — cool summer shortcut."),
+    place("zag-orkulv", "Orkulv / viewpoint park", 45.8175, 15.9725, "sight", "Viewpoint", "Upper Town", 6, "Quiet Upper Town overlooks west of St. Mark's."),
+    place("zag-kaptol", "Kaptol walls", 45.8148, 15.9805, "sight", "Attraction", "Kaptol", 6, "Medieval fortifications around the cathedral precinct."),
+
+    // ——— Museums / Lower Town culture ———
+    place("zag-mimara", "Mimara Museum", 45.8085, 15.9685, "museum", "Museum", "Lower Town", 7, "Private collection from antiquities to Impressionists."),
+    place("zag-mimara-park", "Botanical edge by Mimara", 45.8082, 15.9675, "nature", "Park", "Lower Town", 5, "Green space beside the museum."),
+    place("zag-modern", "Museum of Contemporary Art (MSU)", 45.7835, 15.9465, "museum", "Museum", "Novi Zagreb", 7, "Major contemporary museum south of the Sava."),
+    place("zag-tech", "Technical Museum Nikola Tesla", 45.8055, 15.9635, "museum", "Museum", "Lower Town", 7, "Planetarium, demos, and Tesla exhibits."),
+    place("zag-arts-craft", "Museum of Arts and Crafts", 45.8095, 15.9695, "museum", "Museum", "Lower Town", 6, "Design and decorative arts on the Green Horseshoe."),
+    place("zag-glyptotheque", "Glyptotheque", 45.8115, 15.9685, "museum", "Museum", "Lower Town", 5, "Sculpture casts in a former monastery."),
+    place("zag-home", "Museum of Illusion", 45.8125, 15.9745, "museum", "Museum", "Center", 5, "Playful photo museum near Flower Square."),
+    place("zag-ethnographic", "Ethnographic Museum", 45.8085, 15.9725, "museum", "Museum", "Lower Town", 6, "Croatian folk costumes and rural life."),
+    place("zag-natural", "Croatian Natural History Museum", 45.8165, 15.9725, "museum", "Museum", "Upper Town", 5, "Natural sciences in the Upper Town."),
+    place("zag-atro", "Atelier Meštrović", 45.8145, 15.9705, "museum", "Museum", "Upper Town", 7, "Sculptor's studio museum of Ivan Meštrović."),
+    place("zag-haus", "Klovićevi Dvori Gallery", 45.8155, 15.9748, "museum", "Museum", "Upper Town", 6, "Major exhibition space by the Stone Gate."),
+
+    // ——— Parks / outer ———
+    place("zag-maksimir", "Maksimir Park", 45.825, 16.018, "nature", "Park", "Maksimir", 8, "Vast romantic park with lakes and the city zoo."),
+    place("zag-zoo", "Zagreb Zoo", 45.8235, 16.0215, "sight", "Attraction", "Maksimir", 6, "Zoo inside Maksimir Park."),
+    place("zag-bundek", "Lake Bundek", 45.7835, 15.9865, "nature", "Park", "Novi Zagreb", 6, "Swimming lakes and paths south of the Sava."),
+    place("zag-jarun", "Lake Jarun", 45.78, 15.9215, "nature", "Park", "Jarun", 7, "Sports lake, beaches, and summer nightlife."),
+    place("zag-medvednica", "Medvednica / Sljeme trailhead", 45.8755, 15.9485, "nature", "Park", "Medvednica", 8, "Mountain park above Zagreb — cable car or hike."),
+    place("zag-medvedgrad", "Medvedgrad fortress", 45.87, 15.9415, "sight", "Castle", "Medvednica", 7, "Rebuilt fortress with city panoramas."),
+    place("zag-mirogoj", "Mirogoj Cemetery", 45.8355, 15.9855, "nature", "Park", "North", 7, "Arcaded cemetery — architecture as much as memorial."),
+    place("zag-botanic", "Botanical Garden", 45.8055, 15.9715, "nature", "Garden", "Lower Town", 7, "Free university gardens on the Green Horseshoe."),
+    place("zag-tuk", "Tuškanac forest park", 45.8185, 15.9655, "nature", "Park", "Tuškanac", 6, "Wooded walks west of the Upper Town."),
+
+    // ——— Neighbourhoods ———
+    place("zag-britanski", "British Square flea market", 45.8125, 15.9655, "shopping", "Market", "Center", 7, "Sunday antiques and bric-a-brac market."),
+    place("zag-marticeva", "Martićeva design street", 45.8125, 15.9955, "shopping", "Market", "East", 6, "Design shops and cafés east of the centre."),
+    place("zag-trešnjevka", "Trešnjevka market", 45.7985, 15.9555, "shopping", "Market", "Trešnjevka", 5, "Neighbourhood market west of the centre."),
+    place("zag-savica", "Sava river walk", 45.7955, 15.9755, "nature", "Park", "Sava", 5, "River paths linking Jarun and Bundek approaches."),
+    place("zag-cvjetno", "Cvjetno naselje villas", 45.8085, 15.9555, "sight", "Attraction", "West", 5, "Interwar villa quarter west of Lower Town."),
+
+    // ——— Cafes ———
+    place("zag-cafe-elixir", "Eli's Caffé", 45.8125, 15.9748, "cafe", "Cafe", "Center", 7, "Specialty coffee near Flower Square.", { cuisine: "coffee" }),
+    place("zag-cafe-cogito", "Cogito Coffee", 45.8115, 15.9765, "cafe", "Cafe", "Center", 7, "Local roaster café in the centre.", { cuisine: "coffee" }),
+    place("zag-cafe-tkalc", "Tkalčićeva terrace cafés", 45.8162, 15.9758, "cafe", "Cafe", "Center", 7, "People-watching coffee on the café street.", { cuisine: "coffee" }),
+    place("zag-cafe-vincek", "Vincek pastry café", 45.8128, 15.9758, "cafe", "Cafe", "Center", 7, "Classic kremšnita and cakes.", { cuisine: "pastry coffee" }),
+    place("zag-cafe-u", "U Dvorištu", 45.8155, 15.9745, "cafe", "Cafe", "Upper Town", 6, "Courtyard café near the funicular.", { cuisine: "coffee" }),
+    place("zag-cafe-book", "Booksa", 45.8115, 15.9825, "cafe", "Cafe", "Center", 6, "Literary café with events.", { cuisine: "coffee" }),
+
+    // ——— Food ———
+    place("zag-food-dolac", "Dolac market lunch", 45.814, 15.978, "food", "Quick meal", "Center", 7, "Fresh produce and strukli stalls above Jelačić.", { cuisine: "croatian market" }),
+    place("zag-food-vinodol", "Vinodol", 45.8115, 15.9755, "food", "Restaurant", "Center", 8, "Reliable Croatian classics in a courtyard.", { cuisine: "croatian" }),
+    place("zag-food-ribice", "Ribice i Tri Točkice", 45.8125, 15.9735, "food", "Restaurant", "Center", 7, "Dalmatian seafood in the centre.", { cuisine: "seafood croatian" }),
+    place("zag-food-mane", "Mane Street Food / burek", 45.8135, 15.9775, "food", "Quick meal", "Center", 6, "Burek and quick Balkan bites near the square.", { cuisine: "balkan bakery" }),
+    place("zag-food-lanterna", "Lanterna na Dolcu", 45.8145, 15.9785, "food", "Restaurant", "Center", 7, "Market-side Croatian plates above Dolac.", { cuisine: "croatian" }),
+    place("zag-food-takenoko", "Takenoko", 45.81, 15.9755, "food", "Restaurant", "Center", 6, "Popular sushi break from ćevapi.", { cuisine: "japanese" }),
+    place("zag-food-agava", "Agava", 45.8165, 15.9755, "food", "Restaurant", "Center", 7, "Mediterranean terrace above Tkalčićeva.", { cuisine: "mediterranean croatian" }),
+    place("zag-food-didov", "Didov San", 45.8168, 15.9732, "food", "Restaurant", "Upper Town", 7, "Hearty inland Croatian cooking in Gornji Grad.", { cuisine: "croatian" }),
+    place("zag-food-zinfandel", "Zinfandel's", 45.8115, 15.9785, "food", "Restaurant", "Lower Town", 7, "Hotel Esplanade fine dining.", { cuisine: "croatian european" }),
+    place("zag-food-pekara", "Pekara Dubravica / bakery", 45.8135, 15.9765, "food", "Quick meal", "Center", 6, "Fresh bread and savoury pastries.", { cuisine: "bakery" }),
+    place("zag-food-burger", "Burger Bar / casual", 45.8125, 15.9768, "food", "Quick meal", "Center", 5, "Casual burgers near Flower Square.", { cuisine: "burgers" }),
+    place("zag-food-world", "World Food / Martićeva", 45.8128, 15.9958, "food", "Restaurant", "East", 6, "International dining on the design street.", { cuisine: "european" }),
+    place("zag-food-strukli", "La Štruk", 45.8155, 15.9755, "food", "Restaurant", "Center", 7, "Dedicated to Zagor's cheese štrukli.", { cuisine: "croatian" }),
+    place("zag-food-jarun", "Jarun lakeside dinner", 45.7815, 15.9225, "food", "Restaurant", "Jarun", 5, "Casual lakeside meals in summer.", { cuisine: "croatian" }),
+
+    // ——— Nightlife ———
+    place("zag-night-tkalc", "Tkalčićeva bars", 45.8162, 15.9755, "nightlife", "Bar", "Center", 8, "Dense café-bar strip that runs late."),
+    place("zag-night-jarun", "Jarun nightlife", 45.7795, 15.9205, "nightlife", "Bar", "Jarun", 7, "Summer clubs and lake parties."),
+    place("zag-night-boze", "Bože Pravde / Upper Town pubs", 45.8165, 15.9745, "nightlife", "Bar", "Upper Town", 6, "Quiet pubs around St. Mark's after dark."),
+    place("zag-night-vip", "Vip Club / concert nights", 45.8055, 15.9655, "nightlife", "Bar", "Lower Town", 6, "Live music venue circuit."),
+    place("zag-night-mojo", "Mojo Bar", 45.8155, 15.9765, "nightlife", "Bar", "Center", 6, "Cocktail bar near Tkalčićeva."),
+    place("zag-night-gallery", "Gallery / club nights", 45.81, 15.98, "nightlife", "Bar", "Center", 5, "Central club nights."),
+    place("zag-night-kino", "Kino Europa evening", 45.8115, 15.975, "nightlife", "Bar", "Center", 5, "Arthouse cinema bar vibes."),
+    place("zag-night-brit", "British Square evening", 45.8128, 15.9658, "nightlife", "Bar", "Center", 5, "Neighbourhood bars by the flea market."),
+
+    // ——— Stays ———
+    place("zag-stay-esplanade", "Hotel Esplanade Zagreb", 45.8065, 15.9775, "stay", "Hotel", "Lower Town", 9, "Orient Express-era luxury by the station."),
+    place("zag-stay-regent", "Regent Esplanade suites area", 45.8068, 15.9778, "stay", "Hotel", "Lower Town", 8, "Grand rooms on the Green Horseshoe approach."),
+    place("zag-stay-dubrovnik", "Hotel Dubrovnik", 45.8128, 15.9772, "stay", "Hotel", "Center", 7, "Rooms overlooking Ban Jelačić Square."),
+    place("zag-stay-palace", "Palace Hotel Zagreb", 45.8095, 15.9782, "stay", "Hotel", "Lower Town", 7, "Historic hotel on the Green Horseshoe."),
+    place("zag-stay-jardin", "Hotel Jägerhorn", 45.8145, 15.9748, "stay", "Hotel", "Center", 7, "Boutique base by the funicular."),
+    place("zag-stay-bloom", "Hotel Bloom / design", 45.8085, 15.9655, "stay", "Hotel", "Lower Town", 6, "Design hotel west of Mimara."),
+    place("zag-stay-hostel", "Main Square Hostel", 45.8135, 15.9772, "stay", "Hostel", "Center", 6, "Hostel steps from Ban Jelačić."),
+    place("zag-stay-chic", "Chic Hostel / downtown", 45.8115, 15.9765, "stay", "Hostel", "Center", 6, "Central backpacker stay."),
+    place("zag-stay-upper", "Upper Town boutique hotel", 45.8168, 15.974, "stay", "Hotel", "Upper Town", 7, "Quiet rooms in Gornji Grad."),
+    place("zag-stay-apt-centre", "Ban Jelačić apartment", 45.8132, 15.9778, "stay", "Apartment", "Center", 7, "Self-catering above the main square."),
+    place("zag-stay-apt-tkalc", "Tkalčićeva apartment", 45.8158, 15.9755, "stay", "Apartment", "Center", 7, "Nightlife-street base — request a quiet courtyard."),
+    place("zag-stay-guest", "Maksimir guest house", 45.8225, 16.0125, "stay", "Guest house", "Maksimir", 5, "Park-side stay near the zoo."),
+    place("zag-stay-westin", "The Westin Zagreb", 45.8055, 15.9655, "stay", "Hotel", "Lower Town", 7, "Large upscale hotel near Mimara."),
+    place("zag-stay-sava", "Novi Zagreb / MSU hotel", 45.7855, 15.9485, "stay", "Hotel", "Novi Zagreb", 5, "South-bank base near contemporary art."),
+    place("zag-stay-ibis", "Ibis Zagreb Centar", 45.81, 15.9825, "stay", "Hotel", "Center", 6, "Budget-friendly chain in the centre."),
+  ],
+};

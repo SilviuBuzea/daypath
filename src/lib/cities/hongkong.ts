@@ -3,8 +3,8 @@ import { place } from "./helpers";
 
 export const hongkong: CityCatalog = {
   id: "hongkong",
-  name: "Hong Kong",
-  aliases: ["hong kong", "hk", "hongkong"],
+  name: "Hong Kong, China",
+  aliases: ["hong kong", "hk", "hongkong", "hong kong china"],
   center: { lat: 22.3193, lon: 114.1694 },
   places: [
     // ——— Central / IFC waterfront ———

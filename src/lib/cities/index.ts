@@ -1,53 +1,129 @@
 import { PlannerError } from "../errors";
 import type { CityCatalog } from "../types";
 import { amsterdam } from "./amsterdam";
+import { andorralavella } from "./andorralavella";
 import { antalya } from "./antalya";
+import { athens } from "./athens";
 import { bangkok } from "./bangkok";
 import { barcelona } from "./barcelona";
+import { belgrade } from "./belgrade";
+import { berlin } from "./berlin";
+import { bern } from "./bern";
+import { bratislava } from "./bratislava";
+import { brussels } from "./brussels";
 import { bucharest } from "./bucharest";
+import { budapest } from "./budapest";
+import { chisinau } from "./chisinau";
+import { copenhagen } from "./copenhagen";
 import { delhi } from "./delhi";
 import { dubai } from "./dubai";
+import { dublin } from "./dublin";
 import { EUROPEAN_CAPITALS } from "./europe";
+import { helsinki } from "./helsinki";
 import { hongkong } from "./hongkong";
 import { istanbul } from "./istanbul";
 import { kualalumpur } from "./kualalumpur";
+import { kyiv } from "./kyiv";
 import { lisbon } from "./lisbon";
+import { ljubljana } from "./ljubljana";
 import { london } from "./london";
+import { luxembourg } from "./luxembourg";
 import { macau } from "./macau";
 import { madrid } from "./madrid";
 import { mecca } from "./mecca";
+import { minsk } from "./minsk";
+import { monaco } from "./monaco";
 import { newyork } from "./newyork";
+import { nicosia } from "./nicosia";
+import { oslo } from "./oslo";
 import { paris } from "./paris";
+import { podgorica } from "./podgorica";
+import { prague } from "./prague";
+import { pristina } from "./pristina";
+import { reykjavik } from "./reykjavik";
+import { riga } from "./riga";
 import { rome } from "./rome";
+import { sanmarino } from "./sanmarino";
+import { sarajevo } from "./sarajevo";
 import { seoul } from "./seoul";
 import { shanghai } from "./shanghai";
 import { singapore } from "./singapore";
+import { skopje } from "./skopje";
+import { sofia } from "./sofia";
+import { stockholm } from "./stockholm";
+import { tallinn } from "./tallinn";
+import { tirana } from "./tirana";
 import { tokyo } from "./tokyo";
+import { vaduz } from "./vaduz";
+import { valletta } from "./valletta";
+import { vatican } from "./vatican";
+import { vienna } from "./vienna";
+import { vilnius } from "./vilnius";
+import { warsaw } from "./warsaw";
+import { zagreb } from "./zagreb";
 
-/** Hand-curated catalogs win over the compact EUROPEAN_CAPITALS stubs. */
+/** Hand-curated deep catalogs win over any EUROPEAN_CAPITALS stubs. */
 const CURATED_CITIES: CityCatalog[] = [
   amsterdam,
+  andorralavella,
   antalya,
+  athens,
   bangkok,
   barcelona,
+  belgrade,
+  berlin,
+  bern,
+  bratislava,
+  brussels,
   bucharest,
+  budapest,
+  chisinau,
+  copenhagen,
   delhi,
   dubai,
+  dublin,
+  helsinki,
   hongkong,
   istanbul,
   kualalumpur,
+  kyiv,
   lisbon,
+  ljubljana,
   london,
+  luxembourg,
   macau,
   madrid,
   mecca,
+  minsk,
+  monaco,
   newyork,
+  nicosia,
+  oslo,
   paris,
+  podgorica,
+  prague,
+  pristina,
+  reykjavik,
+  riga,
   rome,
+  sanmarino,
+  sarajevo,
   seoul,
   shanghai,
   singapore,
+  skopje,
+  sofia,
+  stockholm,
+  tallinn,
+  tirana,
   tokyo,
+  vaduz,
+  valletta,
+  vatican,
+  vienna,
+  vilnius,
+  warsaw,
+  zagreb,
 ];
 const CURATED_IDS = new Set(CURATED_CITIES.map((city) => city.id));
 
@@ -56,9 +132,9 @@ export const CITIES: CityCatalog[] = [
   ...EUROPEAN_CAPITALS.filter((city) => !CURATED_IDS.has(city.id)),
 ].sort((a, b) => a.name.localeCompare(b.name));
 
-/** Short names shown in the city field dropdown. */
-export const CITY_OPTIONS: string[] = CITIES.map((city) => shortName(city)).sort((a, b) =>
-  a.localeCompare(b),
+/** Labels shown in the city field dropdown — "City, Country". */
+export const CITY_OPTIONS: string[] = CITIES.map((city) => city.name).sort((a, b) =>
+  shortNameFromLabel(a).localeCompare(shortNameFromLabel(b)),
 );
 
 /** Deep, hand-curated catalogs (London-level detail). */
@@ -92,6 +168,18 @@ export function cityShortName(city: CityCatalog): string {
   return shortName(city);
 }
 
+/** Full planner label, e.g. "Bucharest, Romania". */
+export function cityLabel(city: CityCatalog): string {
+  return city.name;
+}
+
+/** Country/region after the comma, or null for city-states. */
+export function cityCountry(city: CityCatalog): string | null {
+  const parts = city.name.split(",");
+  if (parts.length < 2) return null;
+  return parts.slice(1).join(",").trim() || null;
+}
+
 export function matchCityCatalog(destination: string): CityCatalog | null {
   const needle = normalize(destination);
   if (!needle) return null;
@@ -117,7 +205,11 @@ export function findCityCatalog(destination: string): CityCatalog {
 }
 
 function shortName(city: CityCatalog): string {
-  return city.name.split(",")[0]?.trim() || city.name;
+  return shortNameFromLabel(city.name);
+}
+
+function shortNameFromLabel(label: string): string {
+  return label.split(",")[0]?.trim() || label;
 }
 
 function normalize(value: string): string {

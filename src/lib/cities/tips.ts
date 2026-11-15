@@ -18,7 +18,8 @@ const TIPS: Record<string, string> = {
   newyork: "Neighborhoods matter more than miles. Keep Midtown, Downtown, and a borough pocket (Brooklyn or Upper West) as separate days — subways beat crosstown zigzags.",
   seoul: "Cluster palace areas separately from Hongdae or Gangnam. The subway is excellent — don't try to walk between distant districts.",
   barcelona: "Gaudí sights sell out. Keep Park Güell and Sagrada Família on separate halves of the day if queues look long.",
-  bucharest: "The center is walkable, but Herăstrău and the Village Museum sit farther north — plan a short ride for that pocket.",
+  bucharest:
+    "Treat Bucharest as pockets: Old Town + Victoriei on foot, Cotroceni as its own half-day, and a rideshare or metro north for Herastrau / Village Museum / Primaverii. Obor Market and Vacaresti Nature Park are separate east or south outings — do not fold them into a Victoriei morning.",
   amsterdam: "Bikes rule the streets. Stick to tram lines or walk the canal belt, and reserve Anne Frank House well ahead.",
   athens: "The Acropolis is best early or late for heat and crowds. Carry cash for smaller tavernas in Plaka.",
   belgrade: "Kalemegdan and Stari Grad work on foot. Nightlife runs late in Savamala — plan a slower next morning.",

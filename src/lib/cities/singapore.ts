@@ -4,7 +4,7 @@ import { place } from "./helpers";
 export const singapore: CityCatalog = {
   id: "singapore",
   name: "Singapore",
-  aliases: ["singapore","sg"],
+  aliases: ["singapore", "sg", "singapore city"],
   center: { lat: 1.3521, lon: 103.8198 },
   places: [
     // ——— Marina Bay & Civic District ———

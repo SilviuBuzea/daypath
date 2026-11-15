@@ -1,0 +1,123 @@
+import type { CityCatalog } from "../types";
+import { place } from "./helpers";
+
+export const ljubljana: CityCatalog = {
+  id: "ljubljana",
+  name: "Ljubljana, Slovenia",
+  aliases: ["ljubljana"],
+  center: { lat: 46.0569, lon: 14.5058 },
+  places: [
+    // ——— Center / Old Town ———
+    place("lj-castle", "Ljubljana Castle", 46.0489, 14.5085, "sight", "Castle", "Castle Hill", 10, "Hilltop castle with funicular and city panorama."),
+    place("lj-funicular", "Castle funicular", 46.0495, 14.5075, "sight", "Attraction", "Castle Hill", 7, "Short ride up from Krekov trg."),
+    place("lj-triple", "Triple Bridge", 46.0511, 14.5064, "sight", "Attraction", "Center", 9, "Plečnik's triple span linking Prešeren to Old Town."),
+    place("lj-preseren", "Prešeren Square", 46.0514, 14.5063, "sight", "Attraction", "Center", 9, "Heart of the city with the poet's statue and pink Franciscan church."),
+    place("lj-franciscan", "Franciscan Church of the Annunciation", 46.0518, 14.5058, "sight", "Monument", "Center", 7, "Pink baroque church on Prešeren Square."),
+    place("lj-dragon", "Dragon Bridge", 46.0525, 14.5105, "sight", "Monument", "Center", 8, "Art Nouveau bridge guarded by four dragons."),
+    place("lj-cobblers", "Cobblers' Bridge", 46.0485, 14.5055, "sight", "Attraction", "Old Town", 7, "Plečnik pedestrian bridge with colonnades."),
+    place("lj-robba", "Robba Fountain", 46.0505, 14.5075, "sight", "Monument", "Old Town", 7, "Baroque fountain of the three Carniolan rivers."),
+    place("lj-town-hall", "Ljubljana Town Hall", 46.0502, 14.5078, "sight", "Monument", "Old Town", 6, "Venetian-inspired city hall on Mestni trg."),
+    place("lj-st-nicholas", "Ljubljana Cathedral", 46.0505, 14.5085, "sight", "Monument", "Old Town", 8, "Baroque cathedral of St. Nicholas by the market."),
+    place("lj-market", "Central Market", 46.0515, 14.5085, "shopping", "Market", "Center", 8, "Plečnik colonnade market for produce and flowers."),
+    place("lj-vodnikov", "Vodnikov trg", 46.0518, 14.5092, "sight", "Attraction", "Center", 6, "Market square at the foot of Castle Hill."),
+    place("lj-congress", "Congress Square", 46.0505, 14.5045, "sight", "Attraction", "Center", 7, "Star park and University buildings."),
+    place("lj-ursuline", "Ursuline Church", 46.0508, 14.5035, "sight", "Monument", "Center", 6, "Baroque church on Slovenska cesta."),
+    place("lj-opera", "Slovenian National Opera", 46.0525, 14.5005, "sight", "Monument", "Center", 7, "Neo-Renaissance opera and ballet house."),
+    place("lj-philharmonic", "Slovenian Philharmonic", 46.0495, 14.5055, "sight", "Monument", "Center", 6, "Concert hall on Congress Square edge."),
+    place("lj-national-gallery", "National Gallery building", 46.0535, 14.5005, "sight", "Monument", "Center", 6, "Grand façade on Cankarjeva."),
+    place("lj-neboticnik", "Nebotičnik", 46.0535, 14.5035, "sight", "Viewpoint", "Center", 8, "1930s skyscraper terrace with drinks and views."),
+    place("lj-tromostovje-walk", "Ljubljanica river walk", 46.0495, 14.5055, "nature", "Park", "Center", 8, "Cafe-lined embankments through the old centre."),
+    place("lj-trinke", "Trubarjeva street", 46.0525, 14.5085, "sight", "Attraction", "Center", 6, "Indie shops and bars east of Prešeren."),
+
+    // ——— Tivoli / West ———
+    place("lj-tivoli", "Tivoli Park", 46.0555, 14.49, "nature", "Park", "Tivoli", 9, "City's main park with alleys, ponds, and castle."),
+    place("lj-tivoli-castle", "Tivoli Castle", 46.0545, 14.4885, "sight", "Castle", "Tivoli", 6, "Manor housing the International Centre of Graphic Arts."),
+    place("lj-cankarjev", "Cankarjev dom", 46.0505, 14.4985, "sight", "Attraction", "Center", 6, "National cultural congress centre."),
+    place("lj-republic", "Republic Square", 46.0505, 14.4995, "sight", "Attraction", "Center", 6, "Modernist square with parliament and towers."),
+    place("lj-parliament", "National Assembly Building", 46.0515, 14.5005, "sight", "Monument", "Center", 5, "Slovenian parliament on Republic Square."),
+    place("lj-roznik", "Rožnik Hill", 46.0585, 14.4755, "nature", "Park", "Rožnik", 7, "Wooded hill hike above Tivoli."),
+    place("lj-zoo", "Ljubljana Zoo", 46.0525, 14.4725, "sight", "Attraction", "Rožnik", 6, "Zoo on the slopes of Rožnik."),
+    place("lj-siska", "Šiška district walk", 46.0655, 14.4955, "sight", "Attraction", "Šiška", 5, "Residential creative neighbourhood north-west."),
+
+    // ——— Metelkova / East / Outskirts ———
+    place("lj-metelkova", "Metelkova City", 46.0565, 14.5165, "sight", "Attraction", "Metelkova", 8, "Autonomous cultural zone in a former barracks."),
+    place("lj-akc", "AKC Metelkova clubs", 46.0568, 14.5168, "nightlife", "Bar", "Metelkova", 7, "Alternative nightlife and street art."),
+    place("lj-stožice", "Stožice Stadium area", 46.0805, 14.5255, "sight", "Attraction", "Bežigrad", 5, "Modern sports complex north of centre."),
+    place("lj-btc", "BTC City", 46.0655, 14.5455, "shopping", "Market", "Moste", 5, "Large shopping and entertainment zone."),
+    place("lj-fuzi", "Fučkovci / Šmartinska edge", 46.0625, 14.5355, "sight", "Attraction", "Moste", 4, "Eastern commercial strip."),
+    place("lj-koseze", "Koseze Pond", 46.0655, 14.4755, "nature", "Park", "Koseze", 6, "Local swimming and skating pond."),
+    place("lj-path", "Path of Remembrance and Comradeship", 46.05, 14.48, "nature", "Park", "City loop", 6, "Green belt walking trail around Ljubljana."),
+    place("lj-ljubljana-marsh", "Ljubljana Marsh edge", 46.0055, 14.4755, "nature", "Park", "Barje", 6, "UNESCO wetland south of the city."),
+    place("lj-skyscraper-view", "Castle Hill viewpoints", 46.0485, 14.5095, "sight", "Viewpoint", "Castle Hill", 8, "Rampart lookouts over the red roofs."),
+
+    // ——— Museums ———
+    place("lj-national-museum", "National Museum of Slovenia", 46.0535, 14.498, "museum", "Museum", "Center", 7, "Archaeology and history by Tivoli edge."),
+    place("lj-museum-square", "City Museum of Ljubljana", 46.0475, 14.5055, "museum", "Museum", "Old Town", 7, "City history in Auersperg Palace."),
+    place("lj-modern", "Museum of Modern Art", 46.0545, 14.4985, "museum", "Museum", "Center", 7, "20th-century Slovenian art."),
+    place("lj-contemporary", "Museum of Contemporary Art Metelkova", 46.0565, 14.5175, "museum", "Museum", "Metelkova", 7, "MSUM contemporary collection."),
+    place("lj-ethnographic", "Slovenian Ethnographic Museum", 46.0565, 14.5185, "museum", "Museum", "Metelkova", 6, "Folk culture on the Metelkova campus."),
+    place("lj-natural", "Slovenian Museum of Natural History", 46.0538, 14.4985, "museum", "Museum", "Center", 6, "Nature collections beside the national museum."),
+    place("lj-architecture", "Plečnik House", 46.0415, 14.4955, "museum", "Museum", "Trnovo", 8, "Architect Jože Plečnik's home studio."),
+    place("lj-railway", "Railway Museum", 46.0585, 14.5125, "museum", "Museum", "Center", 5, "Locomotives and railway heritage."),
+    place("lj-illusions", "Museum of Illusions", 46.0515, 14.5055, "museum", "Museum", "Center", 5, "Interactive illusion rooms near Prešeren."),
+    place("lj-brewery", "Union Experience", 46.0555, 14.5055, "museum", "Museum", "Center", 6, "Brewery museum and tasting."),
+    place("lj-slo-ethn", "Serbian Orthodox Church", 46.0545, 14.5085, "sight", "Monument", "Center", 5, "Byzantine-style church near the park."),
+    place("lj-navje", "Navje Memorial Park", 46.0625, 14.5155, "nature", "Park", "Bežigrad", 5, "Quiet memorial park north of centre."),
+
+    // ——— Shopping ———
+    place("lj-galerija", "Galerija Emporium", 46.0515, 14.5055, "shopping", "Market", "Center", 6, "Department store in a grand arcade."),
+    place("lj-citypark", "Citypark", 46.0655, 14.5485, "shopping", "Market", "Moste", 5, "Mall beside BTC."),
+    place("lj-antique", "Antique flea market", 46.0518, 14.5095, "shopping", "Market", "Center", 6, "Sunday flea market by the river."),
+    place("lj-craft", "Craft shops on Mestni trg", 46.0502, 14.5072, "shopping", "Market", "Old Town", 6, "Souvenir and craft boutiques."),
+
+    // ——— Cafes ———
+    place("lj-cafe-chocelato", "Čokoladnica Cukrček", 46.0505, 14.5065, "cafe", "Cafe", "Old Town", 7, "Chocolate cafe near Triple Bridge.", { cuisine: "pastry chocolate" }),
+    place("lj-cafe-toko", "To.ko", 46.0495, 14.5045, "cafe", "Cafe", "Center", 7, "Specialty coffee near Congress Square.", { cuisine: "coffee" }),
+    place("lj-cafe-choc", "Chocolate House", 46.0515, 14.5068, "cafe", "Cafe", "Center", 6, "Hot chocolate specialist.", { cuisine: "chocolate" }),
+    place("lj-cafe-riviera", "Riviera Café", 46.0495, 14.5058, "cafe", "Cafe", "Center", 6, "Riverfront terrace cafe.", { cuisine: "coffee" }),
+    place("lj-cafe-matcha", "Matcha Café", 46.0525, 14.5075, "cafe", "Cafe", "Center", 5, "Tea and matcha near Trubarjeva.", { cuisine: "tea coffee" }),
+    place("lj-cafe-dzi", "Dži Dži", 46.0485, 14.5058, "cafe", "Cafe", "Old Town", 6, "Relaxed Old Town coffee stop.", { cuisine: "coffee" }),
+    place("lj-cafe-sem", "SemSENSA", 46.0535, 14.5055, "cafe", "Cafe", "Center", 6, "Healthy brunch cafe.", { cuisine: "brunch coffee" }),
+    place("lj-cafe-plaza", "Plaza Café Nebotičnik", 46.0535, 14.5038, "cafe", "Cafe", "Center", 7, "Rooftop cafe on the skyscraper.", { cuisine: "coffee" }),
+
+    // ——— Food ———
+    place("lj-food-strelec", "Strelec Restaurant", 46.0489, 14.5088, "food", "Restaurant", "Castle Hill", 9, "Fine dining in the castle archery tower.", { cuisine: "slovenian" }),
+    place("lj-food-jb", "JB Restaurant", 46.0525, 14.5025, "food", "Restaurant", "Center", 8, "Classic fine dining institution.", { cuisine: "european" }),
+    place("lj-food-gostilna", "Gostilna As", 46.0495, 14.5065, "food", "Restaurant", "Old Town", 7, "Seafood and Slovenian classics.", { cuisine: "seafood slovenian" }),
+    place("lj-food-julija", "Julija", 46.0485, 14.5065, "food", "Restaurant", "Old Town", 7, "Mediterranean-Slovenian on the river.", { cuisine: "mediterranean" }),
+    place("lj-food-odprta", "Odprta Kuhna", 46.0515, 14.5088, "food", "Quick meal", "Center", 8, "Friday open kitchen street-food market.", { cuisine: "street_food" }),
+    place("lj-food-druga", "Druga Violina", 46.0495, 14.5075, "food", "Restaurant", "Old Town", 7, "Social enterprise gostilna with local dishes.", { cuisine: "slovenian" }),
+    place("lj-food-gušt", "Gušt", 46.0525, 14.5095, "food", "Restaurant", "Center", 6, "Casual Slovenian near Dragon Bridge.", { cuisine: "slovenian" }),
+    place("lj-food-pizza", "Foculus Pizza", 46.0495, 14.5045, "food", "Restaurant", "Center", 6, "Popular pizzeria near Congress Square.", { cuisine: "italian" }),
+    place("lj-food-vegan", "Vegana", 46.0515, 14.5075, "food", "Restaurant", "Center", 6, "Plant-based plates in the centre.", { cuisine: "vegan" }),
+    place("lj-food-chinese", "Kitajski Most", 46.0525, 14.5115, "food", "Restaurant", "Center", 5, "Chinese near Dragon Bridge.", { cuisine: "chinese" }),
+    place("lj-food-burger", "Pop's Place", 46.0515, 14.5065, "food", "Quick meal", "Center", 6, "Burgers by Prešeren Square.", { cuisine: "burger" }),
+    place("lj-food-fish", "Ribca", 46.0515, 14.5082, "food", "Quick meal", "Center", 7, "Market-side grilled fish counter.", { cuisine: "seafood" }),
+    place("lj-food-skuhna", "Skuhna", 46.0565, 14.5085, "food", "Restaurant", "Center", 6, "World cuisine by migrant chefs.", { cuisine: "world" }),
+    place("lj-food-pri", "Pri Vitezu", 46.0485, 14.5052, "food", "Restaurant", "Old Town", 6, "Traditional dining by Cobblers' Bridge.", { cuisine: "slovenian" }),
+
+    // ——— Nightlife ———
+    place("lj-night-cutty", "Cutty Sark Pub", 46.0515, 14.5065, "nightlife", "Bar", "Center", 6, "Busy pub on the river."),
+    place("lj-night-sax", "Sax Pub", 46.0485, 14.5045, "nightlife", "Bar", "Trnovo", 7, "Jazz-friendly riverside pub."),
+    place("lj-night-cacao", "Cacao", 46.0495, 14.5052, "nightlife", "Bar", "Center", 6, "River terrace cafe-bar."),
+    place("lj-night-dvorni", "Dvorni Bar", 46.0495, 14.5058, "nightlife", "Bar", "Center", 7, "Wine bar with Slovenian pours."),
+    place("lj-night-flot", "Fleet", 46.0525, 14.5085, "nightlife", "Bar", "Center", 6, "Cocktail bar near Trubarjeva."),
+    place("lj-night-top", "Top 113", 46.0535, 14.5035, "nightlife", "Bar", "Center", 7, "Nebotičnik rooftop drinks."),
+    place("lj-night-channel", "Channel Zero", 46.0565, 14.5165, "nightlife", "Bar", "Metelkova", 7, "Metelkova underground club."),
+    place("lj-night-gala", "Gala Hala", 46.0568, 14.5162, "nightlife", "Bar", "Metelkova", 7, "Live music hall in Metelkova."),
+
+    // ——— Stays ———
+    place("lj-stay-antiq", "Antiq Palace Hotel", 46.0485, 14.5045, "stay", "Hotel", "Center", 8, "Boutique palace near Congress Square."),
+    place("lj-stay-cubo", "Cubo Hotel", 46.0535, 14.5015, "stay", "Hotel", "Center", 8, "Design hotel near Tivoli."),
+    place("lj-stay-u", "uHotel", 46.0515, 14.5025, "stay", "Hotel", "Center", 7, "Modern central stay near Slovenska."),
+    place("lj-stay-slon", "Hotel Slon", 46.0515, 14.5045, "stay", "Hotel", "Center", 7, "Historic hotel on Slovenska."),
+    place("lj-stay-lev", "Hotel Lev", 46.0585, 14.5055, "stay", "Hotel", "Center", 6, "High-rise north of the centre."),
+    place("lj-stay-vander", "Vander Urbani Resort", 46.0485, 14.5065, "stay", "Hotel", "Old Town", 9, "Rooftop-pool boutique on the river."),
+    place("lj-stay-allegro", "Hotel Allegro", 46.0495, 14.5085, "stay", "Hotel", "Old Town", 7, "Boutique below the castle."),
+    place("lj-stay-hostel", "Hostel Celica", 46.0565, 14.5175, "stay", "Hostel", "Metelkova", 8, "Former prison cells turned art hostel."),
+    place("lj-stay-hostel2", "Hostel Tresor", 46.0515, 14.5055, "stay", "Hostel", "Center", 6, "Central hostel in a former bank."),
+    place("lj-stay-b&b", "Castle view B&B", 46.0495, 14.5088, "stay", "Guest house", "Old Town", 6, "Small stay under Castle Hill."),
+    place("lj-stay-apt", "Old Town apartment", 46.0495, 14.5075, "stay", "Apartment", "Old Town", 7, "Self-catering above the river."),
+    place("lj-stay-tivoli", "Tivoli edge hotel", 46.0545, 14.4925, "stay", "Hotel", "Tivoli", 6, "Quiet base by the park."),
+  ],
+};

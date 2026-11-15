@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { cityShortName, citySlug, listDeepCities } from "@/lib/cities";
+import { cityCountry, cityShortName, citySlug, listDeepCities } from "@/lib/cities";
 
 export const metadata: Metadata = {
   title: "Cities · Daypath",
@@ -32,6 +32,7 @@ export default function CitiesPage() {
       <ul className="mt-10 grid gap-2 sm:grid-cols-2">
         {cities.map((city) => {
           const name = cityShortName(city);
+          const country = cityCountry(city);
           const sights = city.places.filter((place) => place.category !== "stay").length;
           return (
             <li key={city.id}>
@@ -39,8 +40,11 @@ export default function CitiesPage() {
                 href={`/cities/${citySlug(city)}`}
                 className="flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-line bg-card px-4 py-3 transition hover:border-accent/40"
               >
-                <span className="font-medium">{name}</span>
-                <span className="text-sm text-muted">{sights} places</span>
+                <span>
+                  <span className="font-medium">{name}</span>
+                  {country ? <span className="mt-0.5 block text-sm text-muted">{country}</span> : null}
+                </span>
+                <span className="shrink-0 text-sm text-muted">{sights} places</span>
               </Link>
             </li>
           );

@@ -32,6 +32,7 @@ const TIPS: Record<string, string> = {
   copenhagen: "Bike lanes are excellent if you're comfortable cycling; otherwise buses and metro cover Indre By and beyond.",
   dublin: "The core is walkable. Guinness Storehouse and Kilmainham need a short ride from Trinity and Temple Bar.",
   helsinki: "Suomenlinna needs a ferry — treat it as its own half-day. The center and Design District are walkable.",
+  iasi: "Walk the Palace of Culture → Ștefan cel Mare → Unirii axis on foot. Keep Copou Park + Botanical Garden as a northern pocket, and Cetățuia or Ciric as separate rides — don't zigzag hill to hill.",
   kyiv: "Podil and the upper town are rich on foot. Pechersk Lavra sits a short ride away — don't sandwich it mid-day.",
   ljubljana: "One of Europe's easiest capitals to walk. Use the castle funicular if you want to save your legs for the old town.",
   london: "Neighbourhood days win: Westminster + South Bank, Tower + City, South Kensington museums, then Camden or Greenwich alone. Book Abbey/Tower timed entry; Tube beats crossing the river twice.",

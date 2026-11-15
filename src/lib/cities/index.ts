@@ -21,6 +21,7 @@ import { dublin } from "./dublin";
 import { EUROPEAN_CAPITALS } from "./europe";
 import { helsinki } from "./helsinki";
 import { hongkong } from "./hongkong";
+import { iasi } from "./iasi";
 import { istanbul } from "./istanbul";
 import { kualalumpur } from "./kualalumpur";
 import { kyiv } from "./kyiv";
@@ -84,6 +85,7 @@ const CURATED_CITIES: CityCatalog[] = [
   dublin,
   helsinki,
   hongkong,
+  iasi,
   istanbul,
   kualalumpur,
   kyiv,

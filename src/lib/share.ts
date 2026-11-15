@@ -118,22 +118,30 @@ export function writeShareTokenToUrl(token: string | null) {
 }
 
 function toBase64Url(value: string): string {
-  if (typeof Buffer !== "undefined") {
+  // Prefer Node Buffer on the server only — browser Buffer polyfills often lack "base64url".
+  if (typeof window === "undefined" && typeof Buffer !== "undefined") {
     return Buffer.from(value, "utf8").toString("base64url");
   }
   const bytes = new TextEncoder().encode(value);
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+  const base64 =
+    typeof btoa === "function"
+      ? btoa(binary)
+      : Buffer.from(value, "utf8").toString("base64");
+  return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
 
 function fromBase64Url(token: string): string {
-  if (typeof Buffer !== "undefined") {
+  if (typeof window === "undefined" && typeof Buffer !== "undefined") {
     return Buffer.from(token, "base64url").toString("utf8");
   }
   const padded = token.replace(/-/g, "+").replace(/_/g, "/");
   const pad = padded.length % 4 === 0 ? "" : "=".repeat(4 - (padded.length % 4));
-  const binary = atob(padded + pad);
+  const binary =
+    typeof atob === "function"
+      ? atob(padded + pad)
+      : Buffer.from(padded + pad, "base64").toString("binary");
   const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
   return new TextDecoder().decode(bytes);
 }

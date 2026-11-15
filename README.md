@@ -2,6 +2,8 @@
 
 A small website that builds a personal itinerary from a few questions.
 
+**Live site:** [https://daypath-pi.vercel.app/](https://daypath-pi.vercel.app/)
+
 No API keys. No map. No paid services.
 
 You pick a supported city, how long you're staying, a pace, a budget, and what you care about. Daypath lines up sights, meals, and a place to sleep. Each day stays in one part of the city, in walking order, and every stop has nearby alternatives.

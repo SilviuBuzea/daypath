@@ -61,8 +61,35 @@ export const CITY_OPTIONS: string[] = CITIES.map((city) => shortName(city)).sort
   a.localeCompare(b),
 );
 
+/** Deep, hand-curated catalogs (London-level detail). */
+export const DEEP_CITIES: CityCatalog[] = [...CURATED_CITIES].sort((a, b) =>
+  shortName(a).localeCompare(shortName(b)),
+);
+
 export function listCityNames(): string[] {
   return CITIES.map((city) => city.name);
+}
+
+export function listDeepCities(): CityCatalog[] {
+  return DEEP_CITIES;
+}
+
+export function getCityBySlug(slug: string): CityCatalog | null {
+  const cleaned = slug.trim().toLowerCase();
+  const needle = normalize(cleaned.replace(/-/g, " "));
+  return (
+    DEEP_CITIES.find((city) => city.id === cleaned) ??
+    DEEP_CITIES.find((city) => normalize(shortName(city)) === needle) ??
+    null
+  );
+}
+
+export function citySlug(city: CityCatalog): string {
+  return city.id;
+}
+
+export function cityShortName(city: CityCatalog): string {
+  return shortName(city);
 }
 
 export function matchCityCatalog(destination: string): CityCatalog | null {

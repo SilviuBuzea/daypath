@@ -98,20 +98,29 @@ export function readShareTokenFromLocation(search = ""): string | null {
 export function buildShareUrl(trip: Itinerary, origin?: string): string {
   const token = encodeSharePayload(tripToSharePayload(trip));
   const base =
-    origin ??
-    (typeof window !== "undefined" ? window.location.origin + window.location.pathname : "");
-  return `${base.replace(/\/$/, "")}/?t=${token}`;
+    origin ?? (typeof window !== "undefined" ? window.location.origin : "https://daypath-pi.vercel.app");
+  return `${base.replace(/\/$/, "")}/t?t=${token}`;
 }
 
 export function writeShareTokenToUrl(token: string | null) {
   if (typeof window === "undefined") return;
+  if (token) {
+    window.history.replaceState(null, "", `/t?t=${token}`);
+    return;
+  }
   const url = new URL(window.location.href);
-  if (token) url.searchParams.set("t", token);
-  else url.searchParams.delete("t");
+  url.searchParams.delete("t");
+  if (url.pathname === "/t") {
+    window.history.replaceState(null, "", "/");
+    return;
+  }
   window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
 }
 
 function toBase64Url(value: string): string {
+  if (typeof Buffer !== "undefined") {
+    return Buffer.from(value, "utf8").toString("base64url");
+  }
   const bytes = new TextEncoder().encode(value);
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
@@ -119,6 +128,9 @@ function toBase64Url(value: string): string {
 }
 
 function fromBase64Url(token: string): string {
+  if (typeof Buffer !== "undefined") {
+    return Buffer.from(token, "base64url").toString("utf8");
+  }
   const padded = token.replace(/-/g, "+").replace(/_/g, "/");
   const pad = padded.length % 4 === 0 ? "" : "=".repeat(4 - (padded.length % 4));
   const binary = atob(padded + pad);

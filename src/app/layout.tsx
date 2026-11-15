@@ -7,9 +7,32 @@ import "./globals.css";
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
 
+const SITE = "https://daypath-pi.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Daypath",
-  description: "A personal itinerary that moves through a city in a sensible order.",
+  metadataBase: new URL(SITE),
+  title: {
+    default: "Daypath",
+    template: "%s",
+  },
+  description:
+    "Free neighborhood-aware day plans — sights, meals, and a place to sleep, ordered so you don’t zigzag across town. No account needed.",
+  applicationName: "Daypath",
+  openGraph: {
+    title: "Daypath",
+    description:
+      "Free neighborhood-aware day plans — sights, meals, and a place to sleep, without zigzagging. No account needed.",
+    url: SITE,
+    siteName: "Daypath",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "Daypath",
+    description:
+      "Free neighborhood-aware day plans — sights, meals, and a place to sleep, without zigzagging. No account needed.",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

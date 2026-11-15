@@ -16,6 +16,7 @@ export default function ItineraryView({
   onSwapActivity,
   onSwapMeal,
   onSwapLodging,
+  onRegenerateDay,
   onReset,
   onLoadTrip,
 }: {
@@ -23,6 +24,7 @@ export default function ItineraryView({
   onSwapActivity: (dayIndex: number, oldId: string, newId: string) => void;
   onSwapMeal: (dayIndex: number, role: "lunch" | "dinner" | "evening", newId: string) => void;
   onSwapLodging: (newId: string) => void;
+  onRegenerateDay: (dayIndex: number) => void;
   onReset: () => void;
   onLoadTrip: (trip: Itinerary) => void;
 }) {
@@ -32,6 +34,7 @@ export default function ItineraryView({
   const [savedTrips, setSavedTrips] = useState<SavedTrip[]>(() => listSavedTrips());
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [shareMessage, setShareMessage] = useState<string | null>(null);
+  const [regenMessage, setRegenMessage] = useState<string | null>(null);
   const day = trip.days[Math.min(dayIndex, trip.days.length - 1)];
   const dayMapsUrl = dayRouteMapsUrl(trip, day);
 
@@ -80,43 +83,43 @@ export default function ItineraryView({
 
   return (
     <>
-      <div className="screen-only mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6 sm:px-6">
+      <div className="screen-only mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-6">
         <header className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-sm font-medium text-accent">Daypath</p>
-            <h1 className="font-serif text-4xl tracking-tight sm:text-5xl">{trip.destination}</h1>
+            <h1 className="font-serif text-3xl tracking-tight sm:text-5xl">{trip.destination}</h1>
             <p className="mt-2 text-muted">
               {trip.days.length} {trip.days.length === 1 ? "day" : "days"} · {PACE_LABEL[trip.prefs.pace]} ·{" "}
               {BUDGET_LABEL[trip.prefs.budget]}
             </p>
             <AdvancedSummary prefs={trip.prefs} className="mt-1 max-w-xl text-sm text-muted" />
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex w-full flex-wrap gap-2 sm:w-auto">
             <button
               type="button"
               onClick={() => void handleShareTrip()}
-              className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-white"
+              className="min-h-11 rounded-full bg-accent px-4 py-2.5 text-sm font-medium text-white"
             >
               Share link
             </button>
             <button
               type="button"
               onClick={handleSaveTrip}
-              className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium"
+              className="min-h-11 rounded-full border border-line bg-card px-4 py-2.5 text-sm font-medium"
             >
               Save trip
             </button>
             <button
               type="button"
               onClick={savePdf}
-              className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium"
+              className="min-h-11 rounded-full border border-line bg-card px-4 py-2.5 text-sm font-medium"
             >
               Save as PDF
             </button>
             <button
               type="button"
               onClick={onReset}
-              className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium"
+              className="min-h-11 rounded-full border border-line bg-card px-4 py-2.5 text-sm font-medium"
             >
               Go back
             </button>
@@ -124,6 +127,7 @@ export default function ItineraryView({
         </header>
         {shareMessage ? <p className="text-sm text-forest">{shareMessage}</p> : null}
         {saveMessage ? <p className="text-sm text-forest">{saveMessage}</p> : null}
+        {regenMessage ? <p className="text-sm text-forest">{regenMessage}</p> : null}
 
         {trip.cityTip ? (
           <p className="rounded-2xl border border-line bg-card px-4 py-3 text-sm">
@@ -175,8 +179,8 @@ export default function ItineraryView({
           ) : null}
         </section>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="flex gap-2 overflow-x-auto">
+        <div className="sticky top-0 z-10 -mx-4 flex flex-col gap-2 border-b border-line/80 bg-paper/95 px-4 py-3 backdrop-blur-sm sm:-mx-6 sm:px-6">
+          <div className="flex gap-2 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {trip.days.map((item, index) => (
               <button
                 key={item.day}
@@ -185,7 +189,7 @@ export default function ItineraryView({
                   setDayIndex(index);
                   setOpenKey(null);
                 }}
-                className={`rounded-full px-4 py-2 text-sm font-medium ${
+                className={`min-h-11 shrink-0 rounded-full px-4 py-2.5 text-sm font-medium ${
                   index === dayIndex ? "bg-accent text-white" : "bg-card text-ink border border-line"
                 }`}
               >
@@ -193,14 +197,28 @@ export default function ItineraryView({
               </button>
             ))}
           </div>
-          <a
-            href={dayMapsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium"
-          >
-            Open this day in Maps
-          </a>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href={dayMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center rounded-full border border-line bg-card px-4 py-2.5 text-sm font-medium"
+            >
+              Open this day in Maps
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                onRegenerateDay(dayIndex);
+                setOpenKey(null);
+                setRegenMessage(`Day ${day.day} reshuffled with different stops.`);
+                window.setTimeout(() => setRegenMessage(null), 2500);
+              }}
+              className="min-h-11 rounded-full border border-line bg-card px-4 py-2.5 text-sm font-medium"
+            >
+              Regenerate this day
+            </button>
+          </div>
         </div>
 
         <DaySection trip={trip} day={day} interactive>

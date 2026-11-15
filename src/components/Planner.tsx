@@ -3,9 +3,9 @@
 import { useEffect, useId, useRef, useState } from "react";
 import AdvancedOptions from "@/components/AdvancedOptions";
 import ItineraryView from "@/components/ItineraryView";
-import { CITY_OPTIONS, matchCityCatalog, unsupportedCityMessage } from "@/lib/cities";
+import { CITY_OPTIONS, cityShortName, matchCityCatalog, unsupportedCityMessage } from "@/lib/cities";
 import { formatSavedAt } from "@/lib/format";
-import { swapActivity, swapLodging, swapMeal } from "@/lib/plan";
+import { regenerateDay, swapActivity, swapLodging, swapMeal } from "@/lib/plan";
 import { DEFAULT_PREFERENCES } from "@/lib/preferences";
 import {
   decodeSharePayload,
@@ -77,6 +77,7 @@ export default function Planner() {
     if (stored) setPrefs({ ...DEFAULT_PREFERENCES, ...stored, destination: "" });
     setSavedTrips(listSavedTrips());
 
+    const params = new URLSearchParams(window.location.search);
     const token = readShareTokenFromLocation(window.location.search);
     if (token) {
       const payload = decodeSharePayload(token);
@@ -92,6 +93,18 @@ export default function Planner() {
       } else {
         setError("That shared trip link is invalid or outdated.");
         writeShareTokenToUrl(null);
+      }
+    } else {
+      const cityParam = params.get("city");
+      if (cityParam) {
+        const match = matchCityCatalog(cityParam);
+        if (match) {
+          setPrefs((current) => ({
+            ...current,
+            destination: cityShortName(match),
+          }));
+        }
+        window.history.replaceState(null, "", window.location.pathname === "/t" ? "/" : window.location.pathname);
       }
     }
 
@@ -188,6 +201,7 @@ export default function Planner() {
         onSwapActivity={(dayIndex, oldId, newId) => setTrip(swapActivity(trip, dayIndex, oldId, newId))}
         onSwapMeal={(dayIndex, role, newId) => setTrip(swapMeal(trip, dayIndex, role, newId))}
         onSwapLodging={(newId) => setTrip(swapLodging(trip, newId))}
+        onRegenerateDay={(dayIndex) => setTrip(regenerateDay(trip, dayIndex))}
       />
     );
   }
@@ -195,13 +209,24 @@ export default function Planner() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-4 py-10 sm:px-6">
       <p className="text-sm font-semibold tracking-wide text-accent uppercase">Daypath</p>
-      <h1 className="mt-3 max-w-xl font-serif text-5xl leading-tight tracking-tight">
+      <h1 className="mt-3 max-w-xl font-serif text-4xl leading-tight tracking-tight sm:text-5xl">
         A trip that moves through the city in one direction.
       </h1>
       <p className="mt-4 max-w-xl text-lg text-muted">
         Answer a few questions. Daypath builds a day-by-day plan with sights, meals, a place to sleep,
-        and alternatives for every stop — ordered so you don't cross town and then come back.
+        and alternatives for every stop — ordered so you don&apos;t cross town and then come back.
       </p>
+      <ul className="mt-5 max-w-xl space-y-1.5 text-sm text-muted">
+        <li>Free to use — no account, no booking fees.</li>
+        <li>Saved trips stay on this device; share links carry the plan in the URL.</li>
+        <li>
+          Deep catalogs for{" "}
+          <a href="/cities" className="text-ink underline-offset-2 hover:underline">
+            top cities
+          </a>
+          , plus European capitals.
+        </li>
+      </ul>
 
       <form
         className="mt-8 rounded-3xl border border-line bg-card p-5 sm:p-7"

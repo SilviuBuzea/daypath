@@ -171,6 +171,50 @@ export function rebuildSharedItinerary(
   return refreshAlternatives(draft);
 }
 
+export function regenerateDay(itinerary: Itinerary, dayIndex: number): Itinerary {
+  const day = itinerary.days[dayIndex];
+  if (!day) return itinerary;
+
+  const activityCount = Math.max(
+    2,
+    day.stops.filter((stop) => stop.role === "activity").length,
+  );
+  const blocked = usedByOtherDays(itinerary, dayIndex);
+  const currentIds = new Set(
+    day.stops.filter((stop) => stop.role === "activity").map((stop) => stop.place.id),
+  );
+  const ranked = itinerary.catalog.activities
+    .filter((place) => !blocked.has(place.id))
+    .sort((a, b) => {
+      const aBoost = a.area === day.area ? 4 : 0;
+      const bBoost = b.area === day.area ? 4 : 0;
+      return b.score + bBoost - (a.score + aBoost);
+    });
+  const fresh = ranked.filter((place) => !currentIds.has(place.id));
+  const pool = fresh.length >= activityCount ? fresh : ranked;
+
+  if (pool.length === 0) return itinerary;
+
+  const rotated = [...pool];
+  const offset = Math.floor(Math.random() * rotated.length);
+  const ordered = [...rotated.slice(offset), ...rotated.slice(0, offset)];
+  const picked = ordered.slice(0, Math.min(activityCount, ordered.length));
+
+  const nextDay = assembleDay(
+    day.day,
+    picked,
+    {
+      ...day,
+      pinnedActivityIds: [],
+      mealLocks: { ...EMPTY_LOCKS },
+    },
+    itinerary,
+    dayIndex,
+    itinerary.lodging,
+  );
+  return replaceDay(itinerary, dayIndex, nextDay);
+}
+
 export function swapActivity(
   itinerary: Itinerary,
   dayIndex: number,

@@ -15,9 +15,21 @@
 }
 
 body {
-  background: var(--color-paper);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(194, 77, 44, 0.08), transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, rgba(61, 74, 122, 0.06), transparent 50%),
+    var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 640px) {
+  button,
+  a {
+    touch-action: manipulation;
+  }
 }
 
 button:focus-visible,

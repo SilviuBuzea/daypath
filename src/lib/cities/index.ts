@@ -1,5 +1,6 @@
 import { PlannerError } from "../errors";
 import type { CityCatalog } from "../types";
+import { agra } from "./agra";
 import { amsterdam } from "./amsterdam";
 import { andorralavella } from "./andorralavella";
 import { antalya } from "./antalya";
@@ -13,51 +14,75 @@ import { bratislava } from "./bratislava";
 import { brussels } from "./brussels";
 import { bucharest } from "./bucharest";
 import { budapest } from "./budapest";
+import { cairo } from "./cairo";
+import { cancun } from "./cancun";
+import { chennai } from "./chennai";
 import { chisinau } from "./chisinau";
 import { copenhagen } from "./copenhagen";
 import { delhi } from "./delhi";
+import { denpasar } from "./denpasar";
 import { dubai } from "./dubai";
 import { dublin } from "./dublin";
 import { EUROPEAN_CAPITALS } from "./europe";
+import { guangzhou } from "./guangzhou";
+import { halong } from "./halong";
 import { helsinki } from "./helsinki";
+import { hochiminh } from "./hochiminh";
 import { hongkong } from "./hongkong";
 import { iasi } from "./iasi";
 import { istanbul } from "./istanbul";
+import { jaipur } from "./jaipur";
+import { johorbahru } from "./johorbahru";
 import { kualalumpur } from "./kualalumpur";
 import { kyiv } from "./kyiv";
+import { lasvegas } from "./lasvegas";
 import { lisbon } from "./lisbon";
 import { ljubljana } from "./ljubljana";
 import { london } from "./london";
+import { losangeles } from "./losangeles";
 import { luxembourg } from "./luxembourg";
 import { macau } from "./macau";
 import { madrid } from "./madrid";
 import { mecca } from "./mecca";
+import { medina } from "./medina";
+import { miami } from "./miami";
+import { milan } from "./milan";
 import { minsk } from "./minsk";
 import { monaco } from "./monaco";
+import { moscow } from "./moscow";
+import { mumbai } from "./mumbai";
 import { newyork } from "./newyork";
 import { nicosia } from "./nicosia";
+import { orlando } from "./orlando";
+import { osaka } from "./osaka";
 import { oslo } from "./oslo";
 import { paris } from "./paris";
+import { pattaya } from "./pattaya";
+import { phuket } from "./phuket";
 import { podgorica } from "./podgorica";
 import { prague } from "./prague";
 import { pristina } from "./pristina";
 import { reykjavik } from "./reykjavik";
 import { riga } from "./riga";
+import { riyadh } from "./riyadh";
 import { rome } from "./rome";
 import { sanmarino } from "./sanmarino";
 import { sarajevo } from "./sarajevo";
 import { seoul } from "./seoul";
 import { shanghai } from "./shanghai";
+import { shenzhen } from "./shenzhen";
 import { singapore } from "./singapore";
 import { skopje } from "./skopje";
 import { sofia } from "./sofia";
 import { stockholm } from "./stockholm";
+import { taipei } from "./taipei";
 import { tallinn } from "./tallinn";
 import { tirana } from "./tirana";
 import { tokyo } from "./tokyo";
 import { vaduz } from "./vaduz";
 import { valletta } from "./valletta";
 import { vatican } from "./vatican";
+import { venice } from "./venice";
 import { vienna } from "./vienna";
 import { vilnius } from "./vilnius";
 import { warsaw } from "./warsaw";
@@ -65,6 +90,7 @@ import { zagreb } from "./zagreb";
 
 /** Hand-curated deep catalogs win over any EUROPEAN_CAPITALS stubs. */
 const CURATED_CITIES: CityCatalog[] = [
+  agra,
   amsterdam,
   andorralavella,
   antalya,
@@ -78,50 +104,74 @@ const CURATED_CITIES: CityCatalog[] = [
   brussels,
   bucharest,
   budapest,
+  cairo,
+  cancun,
+  chennai,
   chisinau,
   copenhagen,
   delhi,
+  denpasar,
   dubai,
   dublin,
+  guangzhou,
+  halong,
   helsinki,
+  hochiminh,
   hongkong,
   iasi,
   istanbul,
+  jaipur,
+  johorbahru,
   kualalumpur,
   kyiv,
+  lasvegas,
   lisbon,
   ljubljana,
   london,
+  losangeles,
   luxembourg,
   macau,
   madrid,
   mecca,
+  medina,
+  miami,
+  milan,
   minsk,
   monaco,
+  moscow,
+  mumbai,
   newyork,
   nicosia,
+  orlando,
+  osaka,
   oslo,
   paris,
+  pattaya,
+  phuket,
   podgorica,
   prague,
   pristina,
   reykjavik,
   riga,
+  riyadh,
   rome,
   sanmarino,
   sarajevo,
   seoul,
   shanghai,
+  shenzhen,
   singapore,
   skopje,
   sofia,
   stockholm,
+  taipei,
   tallinn,
   tirana,
   tokyo,
   vaduz,
   valletta,
   vatican,
+  venice,
   vienna,
   vilnius,
   warsaw,

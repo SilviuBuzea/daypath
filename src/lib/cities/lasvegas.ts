@@ -1,0 +1,122 @@
+import type { CityCatalog } from "../types";
+import { place } from "./helpers";
+
+export const lasvegas: CityCatalog = {
+  id: "lasvegas",
+  name: "Las Vegas, United States",
+  aliases: ["las vegas", "vegas"],
+  center: { lat: 36.1699, lon: -115.1398 },
+  places: [
+    // ——— The Strip ———
+    place("las-bellagio-fountains", "Bellagio Fountains", 36.1126, -115.1765, "sight", "Attraction", "Strip", 10, "Free water ballet on the Strip — best after dark."),
+    place("las-bellagio-conservatory", "Bellagio Conservatory", 36.1129, -115.1767, "sight", "Attraction", "Strip", 8, "Seasonal floral displays in the hotel lobby."),
+    place("las-high-roller", "High Roller Observation Wheel", 36.1175, -115.1685, "sight", "Viewpoint", "Strip", 8, "Giant Ferris wheel over the LINQ promenade."),
+    place("las-linq", "The LINQ Promenade", 36.1172, -115.1705, "shopping", "Market", "Strip", 7, "Pedestrian retail spine between Flamingo and LINQ."),
+    place("las-venetian", "Venetian Grand Canal", 36.1215, -115.1695, "sight", "Attraction", "Strip", 8, "Indoor gondolas under painted Venetian skies."),
+    place("las-palazzo", "The Palazzo atrium", 36.1235, -115.1685, "sight", "Attraction", "Strip", 6, "Sister resort shopping and lobby spectacle."),
+    place("las-caesars", "Forum Shops at Caesars", 36.1185, -115.1755, "shopping", "Mall", "Strip", 8, "Roman-themed luxury mall with sky ceiling shows."),
+    place("las-paris-eiffel", "Paris Las Vegas Eiffel Tower", 36.1125, -115.1725, "sight", "Viewpoint", "Strip", 8, "Strip views from the half-scale tower."),
+    place("las-aria", "ARIA Fine Art & atriums", 36.1075, -115.1765, "sight", "Attraction", "Strip", 7, "Contemporary art pieces across CityCenter."),
+    place("las-cosmopolitan", "Cosmopolitan chandelier bar area", 36.1098, -115.175, "sight", "Attraction", "Strip", 7, "Three-story chandelier and lobby people-watching."),
+    place("las-new-york", "New York-New York facade", 36.1025, -115.1745, "sight", "Attraction", "Strip", 7, "Skyline replica and roller coaster silhouette."),
+    place("las-excalibur", "Excalibur castle exterior", 36.0985, -115.1755, "sight", "Attraction", "Strip", 5, "Medieval castle photo stop at the south Strip."),
+    place("las-luxor", "Luxor Sphinx & pyramid", 36.0955, -115.1765, "sight", "Monument", "Strip", 7, "Black pyramid and sphinx at the Strip's south end."),
+    place("las-mgm", "MGM Grand grounds", 36.1025, -115.1695, "sight", "Attraction", "Strip", 6, "Mega-resort complex and lion statues."),
+    place("las-park-mgm", "Park MGM / NoMad gardens", 36.1045, -115.1755, "sight", "Attraction", "Strip", 6, "Non-gaming lobby vibe and park courtyard."),
+    place("las-wynn", "Wynn / Encore lakes", 36.1285, -115.1655, "sight", "Attraction", "Strip", 8, "Mountain lake shows and manicured gardens."),
+    place("las-resorts-world", "Resorts World Las Vegas", 36.1345, -115.1645, "sight", "Attraction", "Strip", 7, "Newer north Strip complex with Asian dining."),
+    place("las-sphere", "Sphere exterior", 36.1205, -115.1615, "sight", "Monument", "Strip", 9, "Exosphere LED orb — walk the plaza even without a show."),
+    place("las-msg-sphere-show", "Sphere venue experience", 36.1208, -115.1618, "sight", "Attraction", "Strip", 9, "Immersive concerts and films — tickets sell out."),
+    place("las-strip-walk", "Las Vegas Strip night walk", 36.1145, -115.1725, "sight", "Attraction", "Strip", 9, "Neon canyon from Bellagio to Venetian after sunset."),
+    place("las-flamingo-wildlife", "Flamingo Wildlife Habitat", 36.1165, -115.1715, "nature", "Park", "Strip", 6, "Free flamingo and turtle pond behind the Flamingo."),
+    place("las-mirage-volcano", "Mirage volcano plaza legacy", 36.1215, -115.1745, "sight", "Attraction", "Strip", 5, "Historic volcano site — check current plaza status."),
+    place("las-treasure", "Treasure Island Sirens cove", 36.1245, -115.1715, "sight", "Attraction", "Strip", 5, "Pirate ship facade facing the Strip."),
+    place("las-circus", "Circus Circus midway", 36.1375, -115.1635, "sight", "Attraction", "Strip", 5, "Free circus acts above the casino floor."),
+
+    // ——— Shows / attractions ———
+    place("las-absinthe", "Absinthe at Caesars", 36.1175, -115.1745, "sight", "Attraction", "Strip", 8, "Raunchy circus-theater under the Spiegel tent."),
+    place("las-o", "O by Cirque at Bellagio", 36.1128, -115.1768, "sight", "Attraction", "Strip", 9, "Aquatic Cirque classic — book ahead."),
+    place("las-ka", "KÀ by Cirque at MGM", 36.1028, -115.1698, "sight", "Attraction", "Strip", 8, "Martial-arts Cirque on a tilting stage."),
+    place("las-beatles", "The Beatles LOVE", 36.1218, -115.1748, "sight", "Attraction", "Strip", 8, "Cirque Beatles show at the Mirage complex."),
+    place("las-shark-reef", "Shark Reef Aquarium", 36.0905, -115.1765, "museum", "Museum", "Strip", 6, "Aquarium tunnel at Mandalay Bay."),
+    place("las-ms-discovery", "Discovery Children's Museum", 36.1685, -115.1435, "museum", "Museum", "Downtown", 6, "Hands-on science near Symphony Park."),
+    place("las-neon-museum", "Neon Museum", 36.1775, -115.1365, "museum", "Museum", "Downtown", 9, "Boneyard of historic Vegas signs — book tours."),
+    place("las-mob-museum", "The Mob Museum", 36.1725, -115.1415, "museum", "Museum", "Downtown", 8, "Crime and law-enforcement history downtown."),
+    place("las-atomic", "National Atomic Testing Museum", 36.1155, -115.1485, "museum", "Museum", "East of Strip", 7, "Nevada Test Site history near Paradise Road."),
+    place("las-arts-factory", "Arts District galleries", 36.1605, -115.1525, "museum", "Museum", "Arts District", 7, "First Friday galleries south of Fremont."),
+
+    // ——— Fremont / Downtown ———
+    place("las-fremont", "Fremont Street Experience", 36.1695, -115.1425, "sight", "Attraction", "Fremont", 9, "LED canopy, zip lines, and street performers."),
+    place("las-fremont-east", "Fremont East District", 36.1695, -115.1385, "nightlife", "Bar", "Fremont", 8, "Indie bars and murals east of the canopy."),
+    place("las-container", "Container Park", 36.1692, -115.1375, "shopping", "Market", "Fremont", 7, "Shipping-container shops and praying-mantis sculpture."),
+    place("las-golden-nugget", "Golden Nugget shark tank", 36.1698, -115.1455, "sight", "Attraction", "Fremont", 7, "Lobby aquarium pool with water slide."),
+    place("las-plaza", "Plaza Hotel overlook", 36.1715, -115.1465, "sight", "Viewpoint", "Fremont", 6, "Historic station-site hotel facing Fremont."),
+    place("las-symphony", "Smith Center / Symphony Park", 36.1685, -115.1515, "sight", "Attraction", "Downtown", 7, "Performing-arts campus west of Fremont."),
+    place("las-life-is-beautiful", "Downtown festival grounds", 36.1685, -115.14, "sight", "Attraction", "Downtown", 5, "Seasonal festival streets when events run."),
+
+    // ——— Nature / day trips ———
+    place("las-red-rock", "Red Rock Canyon", 36.1355, -115.4275, "nature", "Park", "Red Rock", 10, "Scenic loop drive and short desert hikes west of town."),
+    place("las-red-rock-calico", "Calico Hills trails", 36.1455, -115.4255, "nature", "Park", "Red Rock", 8, "Red sandstone scrambles near the visitor center."),
+    place("las-valley-fire", "Valley of Fire day trip", 36.4305, -114.6505, "nature", "Park", "Valley of Fire", 9, "Petroglyphs and red formations — full-day drive."),
+    place("las-hoover", "Hoover Dam", 36.0165, -114.7375, "sight", "Monument", "Hoover Dam", 9, "Dam tours and Bypass Bridge walkway."),
+    place("las-lake-mead", "Lake Mead overlooks", 36.05, -114.8, "nature", "Viewpoint", "Lake Mead", 7, "Reservoir viewpoints on the way to the dam."),
+    place("las-springs-preserve", "Springs Preserve", 36.1705, -115.1905, "nature", "Park", "West Las Vegas", 7, "Desert botanical gardens and Nevada history."),
+    place("las-mount-charleston", "Mount Charleston", 36.2755, -115.6255, "nature", "Park", "Spring Mountains", 8, "Alpine escape — cool hikes in summer heat."),
+    place("las-seven-magic", "Seven Magic Mountains", 35.8395, -115.2705, "sight", "Attraction", "South of Vegas", 7, "Stacked neon boulder art off I-15."),
+
+    // ——— Shopping / neighborhoods ———
+    place("las-fashion-show", "Fashion Show Mall", 36.1275, -115.1715, "shopping", "Mall", "Strip", 7, "Large mall opposite Wynn with Strip views."),
+    place("las-crystals", "The Shops at Crystals", 36.1085, -115.1755, "shopping", "Mall", "Strip", 8, "Architecture-forward luxury at CityCenter."),
+    place("las-premium", "Las Vegas North Premium Outlets", 36.1685, -115.1585, "shopping", "Mall", "Downtown", 6, "Outlet shopping near downtown."),
+    place("las-chinatown", "Chinatown Las Vegas", 36.1255, -115.2055, "shopping", "Market", "Chinatown", 7, "Spring Mountain Road Asian markets and eats."),
+    place("las-downtown-summerlin", "Downtown Summerlin", 36.1655, -115.3325, "shopping", "Mall", "Summerlin", 6, "Suburban open-air retail west of the Strip."),
+    place("las-town-square", "Town Square Las Vegas", 36.0675, -115.1755, "shopping", "Mall", "South Strip", 6, "Park and plaza mall south of Mandalay."),
+
+    // ——— Cafes ———
+    place("las-public-goods", "PublicUs Coffee", 36.1595, -115.1515, "cafe", "Cafe", "Arts District", 7, "Specialty coffee in the Arts District.", { cuisine: "coffee" }),
+    place("las-mothership", "Mothership Coffee", 36.1435, -115.1915, "cafe", "Cafe", "West of Strip", 7, "Local roast favorite off the casino floor.", { cuisine: "coffee" }),
+    place("las-vesta", "Vesta Coffee Roasters", 36.1605, -115.1525, "cafe", "Cafe", "Arts District", 7, "Roastery cafe near First Friday.", { cuisine: "coffee" }),
+    place("las-grocerys", "The Coffee Bar at Cosmo", 36.1095, -115.1745, "cafe", "Cafe", "Strip", 6, "Quick espresso inside Cosmopolitan.", { cuisine: "coffee" }),
+    place("las-sambalatte", "Sambalatte", 36.1155, -115.1725, "cafe", "Cafe", "Strip", 6, "Strip specialty coffee near the LINQ.", { cuisine: "coffee" }),
+    place("las-chai", "Chai & Beans Chinatown", 36.1265, -115.2045, "cafe", "Cafe", "Chinatown", 6, "Tea and coffee on Spring Mountain.", { cuisine: "tea coffee" }),
+    place("las-grove-cafe", "Grove Street Cafe vibe Downtown", 36.1685, -115.14, "cafe", "Cafe", "Fremont", 5, "Daytime caffeine near Fremont East.", { cuisine: "coffee" }),
+    place("las-summers", "Summerlin coffee walk", 36.1665, -115.3315, "cafe", "Cafe", "Summerlin", 5, "Suburban cafe stop after Downtown Summerlin.", { cuisine: "coffee" }),
+
+    // ——— Food ———
+    place("las-bacchanal", "Bacchanal Buffet", 36.1165, -115.1755, "food", "Restaurant", "Strip", 9, "Top-tier Caesars buffet — reserve timed entry.", { cuisine: "international buffet" }),
+    place("las-lotus", "Lotus of Siam", 36.1435, -115.1415, "food", "Restaurant", "East of Strip", 9, "Famous northern Thai — worth the cab.", { cuisine: "thai" }),
+    place("las-oscar", "Oscar's Steakhouse", 36.1715, -115.1465, "food", "Restaurant", "Fremont", 8, "Steak with downtown views at the Plaza.", { cuisine: "steakhouse" }),
+    place("las-raku", "Raku", 36.1255, -115.2055, "food", "Restaurant", "Chinatown", 9, "Izakaya charcoal grilling — book early.", { cuisine: "japanese" }),
+    place("las-best-friend", "Best Friend at Park MGM", 36.1045, -115.1758, "food", "Restaurant", "Strip", 8, "Roy Choi Korean-Mexican energy.", { cuisine: "korean mexican" }),
+    place("las-eggslut", "Eggslut Cosmopolitan", 36.1095, -115.1748, "food", "Quick meal", "Strip", 7, "Breakfast sandwiches in the Cosmo food hall.", { cuisine: "american breakfast" }),
+    place("las-secret-pizza", "Secret Pizza Cosmopolitan", 36.1096, -115.1749, "food", "Quick meal", "Strip", 7, "Hidden New York slice upstairs.", { cuisine: "pizza" }),
+    place("las-hash", "Hash House A Go Go", 36.1195, -115.1725, "food", "Restaurant", "Strip", 7, "Oversized farm plates for brunch.", { cuisine: "american brunch" }),
+    place("las-china-poblano", "China Poblano", 36.1097, -115.1751, "food", "Restaurant", "Strip", 7, "Chinese-Mexican noodles at Cosmo.", { cuisine: "chinese mexican" }),
+    place("las-mon-ami", "Mon Ami Gabi", 36.1125, -115.1728, "food", "Restaurant", "Strip", 7, "Paris patio steak-frites facing Bellagio.", { cuisine: "french" }),
+    place("las-in-n-out", "In-N-Out Tropicana", 36.0995, -115.1745, "food", "Quick meal", "Strip", 6, "California burger run south Strip.", { cuisine: "american burgers" }),
+    place("las-vegas-pho", "Pho Kim Long", 36.1265, -115.2065, "food", "Restaurant", "Chinatown", 7, "Late-night pho on Spring Mountain.", { cuisine: "vietnamese" }),
+    place("las-herbs", "Herbs & Rye", 36.1445, -115.1905, "food", "Restaurant", "West of Strip", 8, "Steak and classic cocktails off-Strip.", { cuisine: "steakhouse" }),
+    place("las-eataly", "Eataly Park MGM", 36.1048, -115.1752, "food", "Market", "Strip", 7, "Italian market counters and sit-down spots.", { cuisine: "italian" }),
+    place("las-tacos-el", "Tacos El Gordo", 36.1265, -115.1685, "food", "Quick meal", "Strip", 8, "Tijuana-style tacos — expect a line.", { cuisine: "mexican" }),
+
+    // ——— Nightlife ———
+    place("las-omnia", "Omnia Nightclub", 36.1168, -115.1748, "nightlife", "Bar", "Strip", 8, "Mega-club at Caesars with terrace views."),
+    place("las-xs", "XS Nightclub", 36.1288, -115.1658, "nightlife", "Bar", "Strip", 8, "Poolside club nights at Encore."),
+    place("las-hakkasan", "Hakkasan Nightclub", 36.1028, -115.1692, "nightlife", "Bar", "Strip", 7, "Multi-level club inside MGM Grand."),
+    place("las-skyfall", "Skyfall Lounge", 36.0958, -115.1762, "nightlife", "Bar", "Strip", 8, "Delano rooftop views over the south Strip."),
+    place("las-ghostbar", "Ghostbar at Palms", 36.1145, -115.1945, "nightlife", "Bar", "Off-Strip", 7, "High-rise lounge west of the Strip."),
+    place("las-commonwealth", "Commonwealth", 36.1695, -115.1388, "nightlife", "Bar", "Fremont", 7, "Rooftop and speakeasy energy on Fremont East."),
+    place("las-downstairs", "Downtown Cocktail Room", 36.1692, -115.1395, "nightlife", "Bar", "Fremont", 8, "Craft cocktails away from the canopy noise."),
+    place("las-atomic-liq", "Atomic Liquors", 36.1685, -115.1355, "nightlife", "Bar", "Fremont", 7, "Historic dive with outdoor beer garden."),
+
+    // ——— Stays ———
+    place("las-stay-bellagio", "Bellagio Hotel & Casino", 36.1129, -115.1765, "stay", "Hotel", "Strip", 10, "Fountain-front classic for central Strip stays."),
+    place("las-stay-cosmo", "The Cosmopolitan of Las Vegas", 36.1098, -115.175, "stay", "Hotel", "Strip", 9, "Room balconies overlooking the Strip."),
+    place("las-stay-wynn", "Wynn Las Vegas", 36.1285, -115.1655, "stay", "Hotel", "Strip", 9, "Luxury north Strip with golf and gardens."),
+    place("las-stay-aria", "ARIA Resort & Casino", 36.1075, -115.1765, "stay", "Hotel", "Strip", 8, "Modern CityCenter base near Crystals."),
+    place("las-stay-vdara", "Vdara Hotel", 36.1095, -115.1785, "stay", "Hotel", "Strip", 8, "Quiet non-gaming tower beside ARIA."),
+    place("las-stay-ny", "New York-New York Hotel", 36.1025, -115.1745, "stay", "Hotel", "Strip", 7, "Themed south Strip stay near MGM."),
+    place("las-stay-nugget", "Golden Nugget Las Vegas", 36.1698, -115.1455, "stay", "Hotel", "Fremont", 8, "Downtown base for Fremont nights."),
+    place("las-stay-nomad", "NoMad Las Vegas", 36.1045, -115.1755, "stay", "Hotel", "Strip", 8, "Boutique-feel stay inside Park MGM."),
+  ],
+};

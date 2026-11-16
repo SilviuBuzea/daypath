@@ -152,12 +152,17 @@ export function listDeepCities(): CityCatalog[] {
   return DEEP_CITIES;
 }
 
+/** Every city the planner supports (same set as the city dropdown). */
+export function listAllCities(): CityCatalog[] {
+  return CITIES;
+}
+
 export function getCityBySlug(slug: string): CityCatalog | null {
   const cleaned = slug.trim().toLowerCase();
   const needle = normalize(cleaned.replace(/-/g, " "));
   return (
-    DEEP_CITIES.find((city) => city.id === cleaned) ??
-    DEEP_CITIES.find((city) => normalize(shortName(city)) === needle) ??
+    CITIES.find((city) => city.id === cleaned) ??
+    CITIES.find((city) => normalize(shortName(city)) === needle) ??
     null
   );
 }
@@ -195,7 +200,7 @@ export function matchCityCatalog(destination: string): CityCatalog | null {
 export function unsupportedCityMessage(destination: string): string {
   const typed = destination.trim();
   if (!typed) return "Enter a city name, or pick one from the list.";
-  return `${typed} is not supported. Pick a city from the list — European capitals and top destinations like London, Paris, Tokyo, and New York.`;
+  return `${typed} is not supported. Pick a city from the list — for example London, Paris, Tokyo, New York, Bucharest, or Iași.`;
 }
 
 export function findCityCatalog(destination: string): CityCatalog {

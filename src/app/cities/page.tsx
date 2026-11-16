@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { cityCountry, cityShortName, citySlug, listDeepCities } from "@/lib/cities";
+import { cityCountry, cityShortName, citySlug, listAllCities } from "@/lib/cities";
 
 export const metadata: Metadata = {
   title: "Cities · Daypath",
   description:
-    "Neighborhood-aware day plans for the world’s most-visited cities — free, no account needed.",
+    "Every city Daypath supports — neighborhood-aware day plans, free, no account needed.",
   openGraph: {
     title: "Cities · Daypath",
     description:
-      "Neighborhood-aware day plans for the world’s most-visited cities — free, no account needed.",
+      "Every city Daypath supports — neighborhood-aware day plans, free, no account needed.",
   },
 };
 
 export default function CitiesPage() {
-  const cities = listDeepCities();
+  const cities = listAllCities();
 
   return (
     <main className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
@@ -23,10 +23,10 @@ export default function CitiesPage() {
           Daypath
         </Link>
       </p>
-      <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">Cities with deep plans</h1>
+      <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">All supported cities</h1>
       <p className="mt-4 max-w-xl text-lg text-muted">
-        Hand-curated catalogs with sights, meals, and stays — ordered so each day stays in one part of
-        town.
+        {cities.length} destinations with curated sights, meals, and stays — each day stays in one
+        part of town.
       </p>
 
       <ul className="mt-10 grid gap-2 sm:grid-cols-2">
@@ -52,11 +52,11 @@ export default function CitiesPage() {
       </ul>
 
       <p className="mt-10 text-sm text-muted">
-        Looking for another destination?{" "}
+        Ready to plan?{" "}
         <Link href="/" className="text-ink underline-offset-2 hover:underline">
           Open the planner
-        </Link>{" "}
-        — European capitals are supported too.
+        </Link>
+        .
       </p>
     </main>
   );

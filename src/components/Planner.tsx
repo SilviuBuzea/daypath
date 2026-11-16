@@ -220,11 +220,10 @@ export default function Planner() {
         <li>Free to use — no account, no booking fees.</li>
         <li>Saved trips stay on this device; share links carry the plan in the URL.</li>
         <li>
-          Deep catalogs for{" "}
           <a href="/cities" className="text-ink underline-offset-2 hover:underline">
-            top cities
+            {CITY_OPTIONS.length} supported cities
           </a>
-          , plus European capitals.
+          , with neighborhood-aware day plans.
         </li>
       </ul>
 
@@ -320,7 +319,7 @@ export default function Planner() {
           <p className="mt-2 text-sm text-accent-dark">{cityError}</p>
         ) : (
           <p className="mt-2 text-sm text-muted">
-            Type a city or open the list — each option includes the country. European capitals plus deep catalogs for top destinations.
+            Type a city or open the list — each option includes the country. Same full list as on the Cities page.
           </p>
         )}
 

@@ -7,14 +7,14 @@ import {
   cityShortName,
   citySlug,
   getCityBySlug,
-  listDeepCities,
+  listAllCities,
 } from "@/lib/cities";
 import { cityTipFor } from "@/lib/cities/tips";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return listDeepCities().map((city) => ({ slug: citySlug(city) }));
+  return listAllCities().map((city) => ({ slug: citySlug(city) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
